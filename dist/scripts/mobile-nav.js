@@ -7,7 +7,7 @@ const mobileFormat = () => {
 	pageNav.innerHTML = "";
 	topNav.classList.add("ml-1");
 	topNav.innerHTML = `<li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link">
             <i class="fas fa-user"></i> Johnny Bravo
         </a>
     </li>
@@ -25,31 +25,31 @@ const mobileFormat = () => {
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="records.html">
             <i class="fas fa-folder"></i> Patient Records
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="new.html">
             <i class="fas fa-folder"></i> New Patient
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="quest.html">
             <i class="fas fa-folder"></i> Quest Designer
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="info.html">
             <i class="fas fa-folder"></i> Account Info
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="help.html">
             <i class="far fa-question-circle"></i> Help
         </a>
     </li>
