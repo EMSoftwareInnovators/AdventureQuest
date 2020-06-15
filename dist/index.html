@@ -18,11 +18,13 @@
 		></script>
 		<!-- Font Awesome -->
 		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
+		<!-- Scripts -->
+		<script src="scripts/app.js" defer></script>
 		<title>Patient Records | Adventure Quest</title>
 	</head>
 	<body>
 		<!-- Navbar -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<img src="img/logo.png" height="30" class="d-inline-block align-top" alt="" loading="lazy" />
@@ -38,9 +40,8 @@
 				>
 					<span class="navbar-toggler-icon"></span>
 				</button>
-
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav w-100 justify-content-end">
+					<ul id="top-nav" class="navbar-nav w-100 justify-content-end">
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Johnny Bravo
@@ -60,7 +61,7 @@
 
 		<!-- Fields -->
 		<div class="container my-3">
-			<ul class="nav nav-tabs">
+			<ul id="page-nav" class="nav nav-tabs">
 				<li class="nav-item">
 					<a class="nav-link active" href="#">Patient Records</a>
 				</li>
@@ -79,33 +80,33 @@
 			</ul>
 			<form class="shadow-lg border border-top-0 p-3">
 				<div class="form-row mb-3">
-					<div class="col">
+					<div class="col-md col-12">
 						<label class="text-dark" for="firstName"><strong>First Name</strong></label>
 						<input type="text" id="firstName" class="form-control" placeholder="John" />
 					</div>
-					<div class="col">
+					<div class="col-md col-12">
 						<label class="text-dark" for="middleInitial"><strong>Middle Initial</strong></label>
 						<input type="text" id="middleInitial" class="form-control" placeholder="C" />
 					</div>
-					<div class="col">
+					<div class="col-md col-12">
 						<label class="text-dark" for="lastName"><strong>Last Name</strong></label>
 						<input type="text" id="lastName" class="form-control" placeholder="Doe" />
 					</div>
 				</div>
 				<div class="form-row mb-3">
-					<div class="col">
+					<div class="col-md col-12">
 						<label class="text-dark" for="patientNumber"><strong>Patient Number</strong></label>
 						<input type="text" id="patientNumber" class="form-control" placeholder="##-#####" />
 					</div>
-					<div class="col">
+					<div class="col-md col-12">
 						<label class="text-dark" for="homePhone"><strong>Home Phone</strong></label>
 						<input type="text" id="homePhone" class="form-control" placeholder="###-###-####" />
 					</div>
-					<div class="col">
+					<div class="col-md col-12">
 						<label class="text-dark" for="workPhone"><strong>Work Phone</strong></label>
 						<input type="text" id="workPhone" class="form-control" placeholder="###-###-####" />
 					</div>
-					<div class="col">
+					<div class="col-md col-12">
 						<label class="text-dark" for="email"><strong>Email Address</strong></label>
 						<input type="email" id="email" class="form-control" placeholder="jDoe@mail.com" />
 					</div>
