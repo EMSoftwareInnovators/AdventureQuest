@@ -2,11 +2,9 @@
 
 Advanced Programming Topics Summer 2020 Project
 
-## How to view (can be deleted later)
+## Added map-box-test branch 
 
-    - Clone repo
-    - Navigate to the "dist" folder inside the repo
-    - Open "index.html" in your preferred internet browser
+## Added branches for everyone
 
 ## Stuff that might be nice to add towards the end
 
