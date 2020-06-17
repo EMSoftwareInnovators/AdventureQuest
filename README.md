@@ -15,7 +15,7 @@ Advanced Programming Topics Summer 2020 Project
     
 ### Harcourt
     - Added map-box-test branch and started researching there API
-    - Added branches for everyone to add too
+    - Added branches for everyone to work in
 
 ## Stuff that might be nice to add towards the end
 
