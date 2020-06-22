@@ -80,7 +80,7 @@
 					<a class="nav-link" href="help.html">Help</a>
 				</li>
 			</ul>
-			<form class="shadow-lg border border-top-0 p-3">
+			<form class="shadow-lg border border-top-0 py-3 px-4">
 				<div class="form-row mb-3">
 					<label for="patientRecord"><strong>Patient Records</strong></label>
 					<select class="form-control" id="patientRecord">
@@ -129,8 +129,10 @@
 					<label class="text-dark" for="patientNotes"><strong>Patient Notes</strong></label>
 					<textarea name="" id="patientNotes" rows="10" class="form-control" placeholder="Patient Notes..."></textarea>
 				</div>
-				<button id="submitBtn" type="submit" class="btn btn-success mr-1">Update Patient</button>
-				<button id="deleteBtn" type="submit" class="btn btn-danger mx-1">Delete Patient</button>
+				<div class="form-row w-100 d-flex justify-content-center">
+					<button id="submitBtn" type="submit" class="btn btn-success mr-1">Update Patient</button>
+					<button id="deleteBtn" type="submit" class="btn btn-danger mx-1">Delete Patient</button>
+				</div>
 			</form>
 		</div>
 		<!-- End Fields -->
