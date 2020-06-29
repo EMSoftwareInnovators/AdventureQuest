@@ -1,10 +1,25 @@
+const stars = document.querySelectorAll(".fa-star");
 const topNav = document.querySelector("#top-nav");
-const pageNav = document.querySelector("#page-nav");
-const pageNavContent = pageNav.innerHTML;
 const topNavContent = topNav.innerHTML;
+const table = document.querySelector("table");
+const container = document.querySelector("#container");
 
+for (const star of stars) {
+	star.addEventListener("click", () => {
+		star.classList.toggle("favorite");
+	});
+}
+
+// need to add in function to make all stars yellow for any already starred messages
+
+/**
+ * Mobile Formatting
+ */
 const mobileFormat = () => {
-	pageNav.innerHTML = "";
+	table.classList.remove("my-5");
+	table.classList.add("table-striped");
+	container.classList.remove("container");
+	container.classList.add("container-fluid");
 	topNav.classList.add("ml-1");
 	topNav.innerHTML = `<li class="nav-item">
         <a class="nav-link">
@@ -57,7 +72,10 @@ const mobileFormat = () => {
 };
 
 const wideFormat = () => {
-	pageNav.innerHTML = pageNavContent;
+	table.classList.add("my-5");
+	table.classList.remove("table-striped");
+	container.classList.add("container");
+	container.classList.remove("container-fluid");
 	topNav.innerHTML = topNavContent;
 };
 
