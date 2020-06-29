@@ -16,10 +16,12 @@ for (const star of stars) {
  * Mobile Formatting
  */
 const mobileFormat = () => {
-	table.classList.remove("my-5");
-	table.classList.add("table-striped");
-	container.classList.remove("container");
-	container.classList.add("container-fluid");
+	if (table !== null) {
+		table.classList.remove("my-5");
+		table.classList.add("table-striped");
+		container.classList.remove("container");
+		container.classList.add("container-fluid");
+	}
 	topNav.classList.add("ml-1");
 	topNav.innerHTML = `<li class="nav-item">
         <a class="nav-link">
@@ -72,10 +74,12 @@ const mobileFormat = () => {
 };
 
 const wideFormat = () => {
-	table.classList.add("my-5");
-	table.classList.remove("table-striped");
-	container.classList.add("container");
-	container.classList.remove("container-fluid");
+	if (table !== null) {
+		table.classList.add("my-5");
+		table.classList.remove("table-striped");
+		container.classList.add("container");
+		container.classList.remove("container-fluid");
+	}
 	topNav.innerHTML = topNavContent;
 };
 
