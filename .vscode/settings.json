@@ -1,7 +1,10 @@
 {
     "cSpell.ignoreWords": [
+        "btns",
         "lattitude",
         "mapbox",
-        "mapboxgl"
+        "mapboxgl",
+        "response",
+        "response btns"
     ]
 }
