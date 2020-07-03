@@ -6,6 +6,9 @@
 ## Express.js (Back-end Framework)
 - https://expressjs.com/en/4x/api.html
 
+## NPM (Package Manager)
+- https://docs.npmjs.com/
+
 ## MySQL Node Module (MySQL Connector)
 - https://github.com/mysqljs/mysql
 
