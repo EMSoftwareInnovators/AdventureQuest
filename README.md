@@ -6,6 +6,9 @@
 ## Express.js (Back-end Framework)
 - https://expressjs.com/en/4x/api.html
 
+## MySQL Node Module (MySQL Connector)
+- https://github.com/mysqljs/mysql
+
 ## Passport (Authentication)
 - http://www.passportjs.org/docs/
 
@@ -20,3 +23,8 @@
 
 ## EJS (Templating Engine)
 - https://ejs.co/#docs
+
+## Heroku (Cloud Deployment)
+- https://devcenter.heroku.com/
+  ### JawsDB (DB deployment)
+  - https://www.jawsdb.com/
