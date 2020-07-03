@@ -1,10 +1,22 @@
-# AdventureQuest
+# Resources 
 
-Advanced Programming Topics Summer 2020 Project
+## Node.js (Back-end)
+- https://nodejs.org/dist/latest-v12.x/docs/api/
 
-## Updates
+## Express.js (Back-end Framework)
+- https://expressjs.com/en/4x/api.html
 
-### Harcourt
+## Passport (Authentication)
+- http://www.passportjs.org/docs/
 
-- Checkout the front-end, let me know what you think
-  - Need to add Adventure Quest Location to redirect to home page
+## Mapbox (Map API)
+- https://docs.mapbox.com/mapbox-gl-js/api/
+
+## Mapquest (Location API)
+- https://developer.mapquest.com/documentation/mapquest-js/v1.0/
+
+## Bcryptjs (Password hashing)
+- https://www.npmjs.com/package/bcryptjs
+
+## EJS (Templating Engine)
+- https://ejs.co/#docs
