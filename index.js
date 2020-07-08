@@ -11,3 +11,5 @@ const connection = mysql.createConnection({
 	password: "",
 	database: "adventurequest"
 });
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));

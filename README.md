@@ -1,3 +1,11 @@
+# Run Server
+
+- In terminal
+
+```
+npm run dev
+```
+
 # Updates
 
 ## Harcourt
