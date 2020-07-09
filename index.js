@@ -12,4 +12,9 @@ const connection = mysql.createConnection({
 	database: "adventurequest"
 });
 
+// set ejs as view engine
+app.set("view engine", "ejs");
+
+app.use("/public", express.static("public"));
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
