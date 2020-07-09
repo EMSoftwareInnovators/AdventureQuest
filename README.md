@@ -1,3 +1,11 @@
+# Install all Node Modules
+
+- In terminal of AdventureQuest Folder
+
+```
+npm install
+```
+
 # Run Server
 
 - In terminal
