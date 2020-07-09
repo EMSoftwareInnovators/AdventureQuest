@@ -16,10 +16,14 @@
 			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 			crossorigin="anonymous"
 		></script>
+		<!-- Mapbox API -->
+		<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
+		<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
 		<!-- Font Awesome -->
 		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
 		<!-- Scripts -->
 		<script src="scripts/mobile-nav.js" defer></script>
+		<script src="scripts/map.js" defer></script>
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 		<title>Adventure Quest | Quest</title>
@@ -50,9 +54,11 @@
 								<i class="fas fa-user ml-2"></i>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#"><i class="far fa-envelope mr-1"></i> Messages</a>
+								<a href="records.html" class="dropdown-item"><i class="fas fa-home mr-1"></i> Home</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
+								<a class="dropdown-item" href="messages.html"><i class="far fa-envelope mr-1"></i> Messages</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
 							</div>
 						</li>
 					</ul>
@@ -80,8 +86,78 @@
 					<a class="nav-link" href="help.html">Help</a>
 				</li>
 			</ul>
-			<form class="shadow-lg border border-top-0 p-3">
-				<!-- FORM DATA GOES HERE -->
+			<form class="shadow-lg border border-top-0 py-3 px-4">
+				<div class="form-row mb-3">
+					<label for="patientRecord"><strong>Patient Name</strong></label>
+					<select class="form-control" id="patientName">
+						<option>Dynamically Filled in by Backend</option>
+						<option>Other option</option>
+						<option>Other option</option>
+					</select>
+				</div>
+				<div class="form-row mb-3">
+					<div class="col-md col-12">
+						<label for="questType"><strong>Quest Type</strong></label>
+						<select class="form-control" id="questType">
+							<option value="daily">Daily Quest</option>
+							<option value="weekly">Weekly Quest</option>
+							<option value="monthly">Monthly Quest</option>
+							<option value="chain">Chain Quest</option>
+						</select>
+					</div>
+					<div class="col-md col-12">
+						<label for="questName"><strong>Quest Name</strong></label>
+						<input id="questName" type="text" class="form-control" placeholder="Quest Name" />
+					</div>
+					<div class="col-md col-12">
+						<label for="questDifficulty"><strong>Quest Difficulty</strong></label>
+						<select class="form-control" id="questType">
+							<option value="trivial">Trivial</option>
+							<option value="easy">Easy</option>
+							<option value="normal">Normal</option>
+							<option value="hard">Hard</option>
+							<option value="extreme">Extreme</option>
+						</select>
+					</div>
+					<div class="col-md col-12">
+						<label for="questItems"><strong>Additional Quest Items</strong></label>
+						<input id="questItems" type="text" class="form-control" placeholder="Additional Items" />
+					</div>
+				</div>
+				<div class="form-row mb-3">
+					<label for="questObjectives"><strong>Quest Objectives</strong></label>
+					<textarea name="" id="questObjectives" rows="7" class="form-control" placeholder="Quest Objectives..."></textarea>
+				</div>
+				<div class="form-row mb-3">
+					<label for="questDescription"><strong>Quest Description</strong></label>
+					<textarea name="" id="questDescription" rows="7" class="form-control" placeholder="Quest Description..."></textarea>
+				</div>
+				<div class="form-row mb-3">
+					<label><strong>Location</strong></label>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Quest Address //This is a feature" />
+						<div class="input-group-append">
+							<button class="btn btn-success" type="button" id="button-addon2"><i class="fas fa-arrow-circle-right"></i></button>
+						</div>
+					</div>
+					<div id="map" style="width: 100%; height: 350px; border-radius: 10px;"></div>
+				</div>
+				<div class="form-row mb-3">
+					<div class="col-md col-12">
+						<label for="questReward"><strong>Quest Reward</strong></label>
+						<input id="questReward" type="text" class="form-control" placeholder="Quest Reward" />
+					</div>
+					<div class="col-md col-12">
+						<label for="questDifficulty"><strong>Quest Status</strong></label>
+						<select class="form-control" id="questType">
+							<option value="incomplete">Incomplete</option>
+							<option value="complete">Complete</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-row w-100 d-flex justify-content-center">
+					<button id="submitBtn" type="submit" class="btn btn-success">Save Quest</button>
+				</div>
 			</form>
 		</div>
 		<!-- End Fields -->

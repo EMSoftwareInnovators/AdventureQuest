@@ -13,13 +13,13 @@ const mobileFormat = () => {
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="messages.html">
             <i class="far fa-envelope"></i> Messages
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="login.html">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
     </li>
