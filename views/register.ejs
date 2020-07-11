@@ -19,7 +19,7 @@
 		<!-- Font Awesome -->
 		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
 		<!-- Favicon -->
-		<link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico" />
+		<link rel="shortcut icon" type="image/x-icon" href="../public/favicon.ico" />
 		<title>Adventure Quest | Records</title>
 	</head>
 	<body>
@@ -27,14 +27,36 @@
 			<div class="col-md-6 m-auto">
 				<div class="card card-body shadow-lg rounded-lg">
 					<h1 class="text-center mb-3"><img src="public/img/double logo.png" alt="" class="img-fluid" /></h1>
-					<form>
-						<div class="form-group">
-							<label for="name">Name</label>
-							<input type="name" id="name" name="name" class="form-control" placeholder="John Doe" value="<%= typeof name != 'undefined' ? name : '' %>" />
+					<%- include('./partials/errors.ejs') %>
+					<form action="/users/register" method="POST">
+						<div class="form-row mb-md-3">
+							<div class="col-md col-12 mb-3 mb-md-0">
+								<label for="fName">First Name</label>
+								<input type="text" id="fName" name="fName" class="form-control" placeholder="John" value="<%= typeof fName != 'undefined' ? fName : '' %>" />
+							</div>
+							<div class="col-md col-12 mb-3 mb-md-0">
+								<label for="lName">Last Name</label>
+								<input type="text" id="lName" name="lName" class="form-control" placeholder="Doe" value="<%= typeof lName != 'undefined' ? lName : '' %>" />
+							</div>
+						</div>
+
+						<div class="form-row mb-md-3">
+							<div class="col-md col-12 mb-3 mb-md-0">
+								<label for="email">Email</label>
+								<input type="email" id="email" name="email" class="form-control" placeholder="jDoe@mail.com" value="<%= typeof email != 'undefined' ? email : '' %>" />
+							</div>
+							<div class="col-md col-12 mb-3 mb-md-0">
+								<label for="phone">Phone</label>
+								<input type="text" id="phone" name="phone" class="form-control" placeholder="Phone #" value="<%= typeof phone != 'undefined' ? phone : '' %>" />
+							</div>
 						</div>
 						<div class="form-group">
-							<label for="email">Email</label>
-							<input type="email" id="email" name="email" class="form-control" placeholder="jDoe@mail.com" value="<%= typeof email != 'undefined' ? email : '' %>" />
+							<label for="organization">Organization</label>
+							<input type="text" id="organization" name="organization" class="form-control" placeholder="Company Name" value="<%= typeof organization != 'undefined' ? organization : '' %>" />
+						</div>
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" id="username" name="username" class="form-control" placeholder="Jdoe12" value="<%= typeof username != 'undefined' ? username : '' %>" />
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label>
