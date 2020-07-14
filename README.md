@@ -1,3 +1,11 @@
+# Install all Node Modules
+
+- In terminal of AdventureQuest Folder
+
+```
+npm install
+```
+
 # Run Server
 
 - In terminal
@@ -10,9 +18,9 @@ npm run dev
 
 ## Harcourt
 
-- Migrated DB from MSSQL Server to MySQL, added a script file under db/mysql to create the DB. There is an automated tool you can use to migrate DB's however I was unable to get it working so I did it by hand. I modified the database some if you want to revert to the older database we can do that just let me know.
-
-- We probably need to update the project backlog as we're now a member short and a lot of requirements have changed.
+- Added basic routing
+- Hashed passwords
+- Added Register.ejs + validation + writing capacity to DB
 
 # Resources
 

@@ -1,0 +1,5 @@
+/node_modules
+/.vscode
+# Want to gitignore the config folder for deployment (sensitive info)
+# /config
+.prettierignore
