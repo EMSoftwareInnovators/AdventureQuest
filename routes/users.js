@@ -8,19 +8,34 @@ router.use("/public", express.static("public"));
 
 // login page
 router.get("/login", (req, res) => {
-    res.render("login", { success_msg: req.flash("success_msg") });
+    res.render("login");
 });
 
-router.post("/login", (req, res) => {});
+router.post("/login", (req, res) => {
+    const { username, password } = req.body;
+    const errors = [];
+    const user = db.query(`SELECT * FROM users_medical WHERE username = ?`, [username], (err, results) => {
+        // get all results based on a passed in username
+    });
+
+    // Check required fields
+    if (!username || !password) {
+        errors.push({ msg: "Please fill out all fields!" });
+    }
+
+    // Check if username exists
+
+    // Check if username and password match
+});
 
 // register page
 router.get("/register", (req, res) => {
-    res.render("register", { success_msg: req.flash("success_msg") });
+    res.render("register");
 });
 
 router.post("/register", (req, res) => {
     const { fName, lName, email, phone, username, organization, password, password2 } = req.body;
-    let errors = [];
+    const errors = [];
 
     // Check required fields
     if (!fName || !lName || !email || !phone || !username || !organization || !password || !password2) {
