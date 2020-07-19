@@ -30,6 +30,8 @@ router.post("/login", (req, res, next) => {
 			failureRedirect: "/users/login",
 			failureFlash: true
 		})(req, res, next);
+	} else {
+		res.render("login", { username, password, errors });
 	}
 });
 
@@ -176,6 +178,13 @@ router.post("/register", (req, res) => {
 			}
 		});
 	}
+});
+
+// logout
+router.get("/logout", (req, res) => {
+	req.logout();
+	req.flash("success_msg", "You are now logged out.");
+	res.redirect("/users/login");
 });
 
 module.exports = router;
