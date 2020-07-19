@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../config/db");
+const { db } = require("../config/db");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
@@ -182,6 +182,13 @@ router.post("/register", (req, res) => {
 
 // logout
 router.get("/logout", (req, res) => {
+	/**
+	 * Lots of questions surrounding sessionID;
+	 * should I delete it on logout?
+	 * if so it'll delete any preferences they may have selected
+	 * I get the same sessionID if I logout and login with a different username/password, is it storing sessions by IP/MAC?
+	 */
+	console.log(req.sessionID);
 	req.logout();
 	req.flash("success_msg", "You are now logged out.");
 	res.redirect("/users/login");

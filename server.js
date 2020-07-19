@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const flash = require("connect-flash");
 const session = require("express-session");
+const { sessionStore } = require("./config/db");
 const passport = require("passport");
 
 // passport config
@@ -17,7 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 // express session middleware
 app.use(
 	session({
+		// secret needs to be an array of random chars in deployment
 		secret: "secret",
+		store: sessionStore,
 		resave: true,
 		saveUninitialized: true
 	})
