@@ -1,3 +1,23 @@
+# Updates
+
+## Harcourt
+
+- Auth done
+
+- Logout works
+
+- Minor redesign on Login && Register pages
+
+- All pages in the 'index' route are now protected, will redirect to login w/ error msg if an attempt to access is made w/ out auth
+
+- ??Need to store sessions in DB, using some weird default storage right now??
+
+- _Currently sending the entire user object of logged in user for dev while we figure out what fields we need for each page but need to trim for security && performance for deployment._
+
+## Chad
+
+## Robert
+
 # Install all Node Modules
 
 - In terminal of AdventureQuest Folder
@@ -13,14 +33,6 @@ npm install
 ```
 npm run dev
 ```
-
-# Updates
-
-## Harcourt
-
-- Added basic routing
-- Hashed passwords
-- Added Register.ejs + validation + writing capacity to DB
 
 # Resources
 
