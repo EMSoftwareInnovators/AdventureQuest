@@ -1,3 +1,25 @@
+# Updates
+
+## Harcourt
+
+- **?? I was able to get the session to be stored in the DB, and not in memory any more. This leads to more questions??**
+- *??Should I delete session on logout? Doing so would remove the possibility of retaining any app preferences/settings??*
+- *??I noticed that when logging in and out that the same sessionID was stored in the DB regardless of which account I used, this would then make me assume that the sessions are assigned via IP/MAC addresses. Works perfectly fine from a front facing perspective can login and out things are protected displayed correctly however the sessionID remains the same just some of the cookie data changes. If anyone has a suggestion of how to get to the bottom of this short of deploying it and using multiple machines to create sessions I would be open to them. As for now its 100% fine for deployment just something I noticed and didn't understand. cheers -Harcourt??*
+
+- Auth done
+
+- Logout works
+
+- Minor redesign on Login && Register pages
+
+- All pages in the 'index' route are now protected, will redirect to login w/ error msg if an attempt to access is made w/ out auth
+
+- _Currently sending the entire user object of logged in user for dev while we figure out what fields we need for each page but need to trim for security && performance for deployment._
+
+## Chad
+
+## Robert
+
 # Install all Node Modules
 
 - In terminal of AdventureQuest Folder
@@ -13,14 +35,6 @@ npm install
 ```
 npm run dev
 ```
-
-# Updates
-
-## Harcourt
-
-- Added basic routing
-- Hashed passwords
-- Added Register.ejs + validation + writing capacity to DB
 
 # Resources
 
