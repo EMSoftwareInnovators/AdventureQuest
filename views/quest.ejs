@@ -33,7 +33,7 @@
 		<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="public/img/logo.png" height="30" class="d-inline-block align-top" alt="" loading="lazy" />
+					<img src="public/img/logo.png" height="30" class="d-inline-block align-top" alt="" loading="lazy" />	
 				</a>
 				<button
 					class="navbar-toggler"
@@ -90,9 +90,9 @@
 				<div class="form-row mb-3">
 					<label for="patientRecord"><strong>Patient Name</strong></label>
 					<select class="form-control" id="patientName">
-						<option>Dynamically Filled in by Backend</option>
-						<option>Other option</option>
-						<option>Other option</option>
+						<% dropdownVals.forEach(value => {  %> 
+							<option value="<%= value.patientID %>"><%= value.fName + " " + value.lName %> </option>
+						<% }) %> 
 					</select>
 				</div>
 				<div class="form-row mb-3">
