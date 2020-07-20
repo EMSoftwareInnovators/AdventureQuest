@@ -12,9 +12,14 @@ router.get("/response", (req, res) => {
 
 // patient record page
 router.get("/records", (req, res) => {
-    res.render("records");
+    var doc = 1;
+    var sql = 'SELECT * FROM users_patients WHERE doctorID = ?';
+    db.query(sql,[doc], function (err,result){
+        if(err) console.log(err)
+    res.render("records", {dropdownVals: result})
 });
 
+})
 // quest designer page
 router.get("/quest", (req, res) => {
     // query the db to get all patients assigned to logged in user (doctor) probably store them in a variable

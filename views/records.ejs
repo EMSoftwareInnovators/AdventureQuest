@@ -86,9 +86,9 @@
 				<div class="form-row mb-3">
 					<label for="patientRecord"><strong>Patient Records</strong></label>
 					<select class="form-control" id="patientRecord">
-						<option>Dynamically Filled in by Backend</option>
-						<option>Other option</option>
-						<option>Other option</option>
+						<% dropdownVals.forEach(value => {  %> 
+							<option value="<%= value.patientID %>"><%= value.fName + " " + value.lName %> </option>
+						<% }) %> 
 					</select>
 				</div>
 				<div class="form-row mb-3">
