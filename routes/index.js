@@ -42,6 +42,49 @@ router.get("/info", ensureAuthenticated, (req, res) => {
     res.render("info", { user: req.user });
 });
 
+router.post("/info", ensureAuthenticated, (req, res) => {
+    // get form input
+    const { fName, lName, email, password, org } = req.body;
+    let unformattedPhone = req.body.phone;
+
+    // parse phone number of all '-' && hash password && redirect back to info
+    while (unformattedPhone.includes("-")) {
+        unformattedPhone = unformattedPhone.replace("-", "");
+    }
+    const phone = unformattedPhone;
+
+    // validate all the data from the user
+    const errors = [];
+
+    if (!fName || !lName || !email || !phone || !org) {
+        errors.push({ msg: "All fields are required!" });
+    }
+
+    // more validation
+
+    if (errors.length > 0) {
+        res.render("info", {
+            user: req.user,
+            errors,
+            fName,
+            lName,
+            unformattedPhone,
+            email,
+            password,
+            org,
+        });
+    } else {
+        // hash password you can copy this from routes/users.js -> register POST
+
+        // one write for w/ updated password && one write w/ no updated password this will be an if/else stmt
+
+        // write to the DB
+
+        // re render info page
+        res.render("info", { user: req.user });
+    }
+});
+
 // help FAQ page
 router.get("/help", ensureAuthenticated, (req, res) => {
     res.render("help", { user: req.user });
