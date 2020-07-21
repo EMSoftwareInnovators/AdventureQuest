@@ -1,10 +1,10 @@
 # To-Do
 
--   End to end encryption on all pages
+-   End to end encryption on all pages: Endcrypt OR crypto ??Let Encrypt??
 
 -   Retain user input on invalid submission on login.ejs
 
--   Get current location with Javascript
+-   Get current location with Javascript HTML Geolocation API
 
 -   Force Some inputs to be formatted a specific way i.e. 123-456-7890 instead of 1234567890
 
