@@ -25,16 +25,15 @@ const formatPhone = (num) => {
 		num = num.replace("-", "");
 	}
 
-	/**
-	 * Check to make sure each value is an integer
-	 */
-	// const numArr = num.split('');
-	// numArr.map((value) => {
-	//     if()
-	// })
+	const numArr = num.split("");
+	numArr.map((value) => {
+		if (!Number.isInteger(parseInt(value))) {
+			num = num.replace(num[num.search(value)], "");
+		}
+	});
 
 	if (num.length > 10) {
-		return num.slice(0, 10);
+		return num.slice(0, 9);
 	}
 
 	if (num.length == 10) {
