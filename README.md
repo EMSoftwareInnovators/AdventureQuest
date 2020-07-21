@@ -10,7 +10,7 @@
 
 -   Add red boxes around any invalid inputs along w/ the error messages
 
--   Create Messages Table in DB (doctorID && patientID foreign keys)
+-   Create Messages Table in DB (doctorID && patientID foreign keys)`
 
 -   rename Quest Designer -> New Quest on all ejs templates
 
