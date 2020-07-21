@@ -50,7 +50,7 @@
 					<ul id="top-nav" class="navbar-nav w-100 justify-content-end">
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Johnny Bravo
+								<%= user.username %> 
 								<i class="fas fa-user ml-2"></i>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -58,7 +58,7 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="/messages"><i class="far fa-envelope mr-1"></i> Messages</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="/users/login"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
+								<a class="dropdown-item" href="/users/logout"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
 							</div>
 						</li>
 					</ul>
@@ -134,12 +134,6 @@
 				</div>
 				<div class="form-row mb-3">
 					<label><strong>Location</strong></label>
-					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="Quest Address //This is a feature" />
-						<div class="input-group-append">
-							<button class="btn btn-success" type="button" id="button-addon2"><i class="fas fa-arrow-circle-right"></i></button>
-						</div>
-					</div>
 					<div id="map" style="width: 100%; height: 350px; border-radius: 10px;"></div>
 				</div>
 				<div class="form-row mb-3">

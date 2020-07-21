@@ -1,26 +1,48 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../config/db");
+const { db } = require("../config/db");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 // set static assets
 router.use("/public", express.static("public"));
 
 // login page
 router.get("/login", (req, res) => {
-    res.render("login", { success_msg: req.flash("success_msg") });
+    res.render("login");
 });
 
-router.post("/login", (req, res) => {});
+router.post("/login", (req, res, next) => {
+    const { username, password } = req.body;
+    const errors = [];
+    const user = db.query(`SELECT * FROM users_medical WHERE username = ?`, [username], (err, results) => {
+        // get all results based on a passed in username
+    });
+
+    // Check required fields
+    if (!username || !password) {
+        errors.push({ msg: "Please fill out all fields!" });
+    }
+
+    if (errors.length == 0) {
+        passport.authenticate("local", {
+            successRedirect: "/records",
+            failureRedirect: "/users/login",
+            failureFlash: true,
+        })(req, res, next);
+    } else {
+        res.render("login", { username, password, errors });
+    }
+});
 
 // register page
 router.get("/register", (req, res) => {
-    res.render("register", { success_msg: req.flash("success_msg") });
+    res.render("register");
 });
 
 router.post("/register", (req, res) => {
     const { fName, lName, email, phone, username, organization, password, password2 } = req.body;
-    let errors = [];
+    const errors = [];
 
     // Check required fields
     if (!fName || !lName || !email || !phone || !username || !organization || !password || !password2) {
@@ -150,12 +172,26 @@ router.post("/register", (req, res) => {
 								VALUES(?, ?, ?, ?, ?, ?, ?)`,
                         [fName, lName, email, phone, username, organization, hashedPassword]
                     );
-                    req.flash("success_msg", "You successfuly registered. You may now log in.");
+                    req.flash("success_msg", "You successfully registered. You may now log in.");
                     res.redirect("/users/login");
                 });
             }
         });
     }
+});
+
+// logout
+router.get("/logout", (req, res) => {
+    /**
+     * Lots of questions surrounding sessionID;
+     * should I delete it on logout?
+     * if so it'll delete any preferences they may have selected
+     * I get the same sessionID if I logout and login with a different username/password, is it storing sessions by IP/MAC?
+     */
+    // console.log(req.sessionID);
+    req.logout();
+    req.flash("success_msg", "You are now logged out.");
+    res.redirect("/users/login");
 });
 
 module.exports = router;

@@ -46,7 +46,7 @@
 					<ul id="top-nav" class="navbar-nav w-100 justify-content-end">
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Johnny Bravo
+								<%= user.username %> 
 								<i class="fas fa-user ml-2"></i>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -54,7 +54,7 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="/messages"><i class="far fa-envelope mr-1"></i> Messages</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="/users/login"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
+								<a class="dropdown-item" href="/users/logout"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
 							</div>
 						</li>
 					</ul>
@@ -89,8 +89,8 @@
 						<input type="text" id="firstName" class="form-control" placeholder="John" />
 					</div>
 					<div class="col-md col-12">
-						<label class="text-dark" for="middleInitial"><strong>Middle Initial</strong></label>
-						<input type="text" id="middleInitial" class="form-control" placeholder="C" />
+						<label class="text-dark" for="middleName"><strong>Middle Name</strong></label>
+						<input type="text" id="middleName" class="form-control" placeholder="Charlie" />
 					</div>
 					<div class="col-md col-12">
 						<label class="text-dark" for="lastName"><strong>Last Name</strong></label>
@@ -98,10 +98,6 @@
 					</div>
 				</div>
 				<div class="form-row mb-3">
-					<div class="col-md col-12">
-						<label class="text-dark" for="patientNumber"><strong>Patient Number</strong></label>
-						<input type="text" id="patientNumber" class="form-control" placeholder="##-#####" />
-					</div>
 					<div class="col-md col-12">
 						<label class="text-dark" for="homePhone"><strong>Home Phone</strong></label>
 						<input type="text" id="homePhone" class="form-control" placeholder="###-###-####" />
