@@ -46,3 +46,19 @@ app.use("/users", require("./routes/users"));
 
 // set server to listen
 app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
+
+/**
+ * How to write a query
+ *
+ * db.query('SELECT * FROM table WHERE condition = ?, [condition], function(err, result) {
+ *  // err stores any errors if there are any and allows you to do what ever error handling you'd like
+ *  if(err) {
+ *      console.log(err)
+ *  }
+ *
+ *  // It returns an array with each element being an object consiting of the selected row probably best
+ *  // to console.log it to just check out what it is and see what you want to do next. Remember its logging
+ *  // to the vs code (server) terminal not the browser console.
+ *  console.log(results);
+ * })
+ */

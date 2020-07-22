@@ -20,6 +20,7 @@
 		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
 		<!-- Scripts -->
 		<script src="public/scripts/mobile-nav.js" defer></script>
+		<script src="public/scripts/info.js" defer></script>
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico" />
 		<title>Adventure Quest | Info</title>
@@ -82,38 +83,51 @@
 					<a class="nav-link" href="/help">Help</a>
 				</li>
 			</ul>
-			<form class="shadow-lg border border-top-0 py-3 px-4">
+			<form action="/info" method="POST" class="shadow-lg border border-top-0 py-3 px-4">
+				<%- include('./partials/errors.ejs') %>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
-						<label for="firstName"><strong>First Name</strong></label>
-						<input id="firstName" type="text" class="form-control" placeholder="John" />
-					</div>
-					<div class="col-md col-12">
-						<label for="lastName"><strong>Last Name</strong></label>
-						<input type="text" id="lastName" class="form-control" placeholder="Doe" />
+						<label for="username"><strong>Username *</strong></label>
+						<input id="username" name="username" type="text" class="form-control" placeholder="Username" value="<%= user.username %>">
 					</div>
 				</div>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
-						<label for="phone"><strong>Contact Number</strong></label>
-						<input type="text" id="phone" class="form-control" placeholder="###-###-####" />
+						<label for="firstName"><strong>First Name *</strong></label>
+						<input id="firstName" name="fName" type="text" class="form-control" placeholder="John" value="<%= user.fName %>" />
 					</div>
 					<div class="col-md col-12">
-						<label for="email"><strong>Email Address</strong></label>
-						<input type="text" id="email" class="form-control" placeholder="Johndoe@mail.com" />
-					</div>
-					<div class="col-md col-12">
-						<label for="password"><strong>Password</strong></label>
-						<input type="text" id="password" class="form-control" placeholder="********" />
+						<label for="lastName"><strong>Last Name *</strong></label>
+						<input type="text" id="lastName" name="lName" class="form-control" placeholder="Doe" value="<%= user.lName %>"/>
 					</div>
 				</div>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
-						<label for="organization"><strong>Organization</strong></label>
-						<input type="text" id="organization" class="form-control" placeholder="Company Name" />
+						<label for="phone"><strong>Contact Number *</strong></label>
+						<input type="text" id="phone" name="phone" class="form-control" placeholder="###-###-####" value="<%= user.phone %>"/>
+					</div>
+					<div class="col-md col-12">
+						<label for="email"><strong>Email Address *</strong></label>
+						<input type="text" id="email" name="email" class="form-control" placeholder="Johndoe@mail.com" value="<%= user.email %>"/>
 					</div>
 				</div>
-				<div class="form-row w-100 d-flex justify-content-center">
+				<div class="form-row mb-3">
+					<div class="col-md col-12">
+						<label for="password"><strong>Update Password</strong></label>
+						<input id="password" name="password" type="password" class="form-control" placeholder="******" />
+					</div>
+					<div class="col-md col-12">
+						<label for="password2"><strong>Confirm New Password</strong></label>
+						<input id="password2" name="password2" type="password" class="form-control" placeholder="******" />
+					</div>
+				</div>
+				<div class="form-row mb-3">
+					<div class="col-md col-12">
+						<label for="organization"><strong>Organization *</strong></label>
+						<input type="text" id="organization" name="org" class="form-control" placeholder="Company Name" value="<%= user.organization %>"/>
+					</div>
+				</div>
+				<div class="form-row w-100 d-flex justify-content-end">
 					<button id="submitBtn" type="submit" class="btn btn-success">Update Info</button>
 				</div>
 			</form>
