@@ -86,10 +86,10 @@
 					<a class="nav-link" href="/help">Help</a>
 				</li>
 			</ul>
-			<form class="shadow-lg border border-top-0 py-3 px-4">
+			<form action="/quest" method="POST" class="shadow-lg border border-top-0 py-3 px-4">
 				<div class="form-row mb-3">
 					<label for="patientRecord"><strong>Patient Name *</strong></label>
-					<select class="form-control" id="patientName">\
+					<select name="patientID" class="form-control" id="patientName">\
 						<% if (patients.length == 0) { %>
 							<option value="<%= null %>">No patients assigned</option>
 						<% } else { %>
@@ -102,7 +102,7 @@
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
 						<label for="questType"><strong>Quest Type *</strong></label>
-						<select class="form-control" id="questType">
+						<select name="questType" class="form-control" id="questType">
 							<option value="daily">Daily Quest</option>
 							<option value="weekly">Weekly Quest</option>
 							<option value="monthly">Monthly Quest</option>
@@ -111,11 +111,11 @@
 					</div>
 					<div class="col-md col-12">
 						<label for="questName"><strong>Quest Name *</strong></label>
-						<input id="questName" type="text" class="form-control" placeholder="Quest Name" />
+						<input name="questName" id="questName" type="text" class="form-control" placeholder="Quest Name" />
 					</div>
 					<div class="col-md col-12">
 						<label for="questDifficulty"><strong>Quest Difficulty *</strong></label>
-						<select class="form-control" id="questType">
+						<select name='questDifficulty' class="form-control" id="questType">
 							<option value="trivial">Trivial</option>
 							<option value="easy">Easy</option>
 							<option value="normal">Normal</option>
@@ -125,29 +125,31 @@
 					</div>
 					<div class="col-md col-12">
 						<label for="questItems"><strong>Additional Quest Items</strong></label>
-						<input id="questItems" type="text" class="form-control" placeholder="Additional Items" />
+						<input name="questItems" id="questItems" type="text" class="form-control" placeholder="Additional Items" />
 					</div>
 				</div>
 				<div class="form-row mb-3">
 					<label for="questObjectives"><strong>Quest Objectives *</strong></label>
-					<textarea name="" id="questObjectives" rows="7" class="form-control" placeholder="Quest Objectives..."></textarea>
+					<textarea name="questObjectives" id="questObjectives" rows="7" class="form-control" placeholder="Quest Objectives..."></textarea>
 				</div>
 				<div class="form-row mb-3">
 					<label for="questDescription"><strong>Quest Description *</strong></label>
-					<textarea name="" id="questDescription" rows="7" class="form-control" placeholder="Quest Description..."></textarea>
+					<textarea name="questDescription" id="questDescription" rows="7" class="form-control" placeholder="Quest Description..."></textarea>
 				</div>
 				<div class="form-row mb-3">
-					<label><strong>Location *</strong></label>
+					<label><strong>Location *</strong><br><span class="text-sm">Move the marker to the desired quest location</span></label>
 					<div class="p-5" id="map" style="width: 100%; height: 350px; border-radius: 10px;"></div>
+					<input name="longitude" type="hidden" id="longitude">
+					<input name="latitude" type="hidden" id="lattitude">
 				</div>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
 						<label for="questReward"><strong>Quest Reward *</strong></label>
-						<input id="questReward" type="text" class="form-control" placeholder="Quest Reward" />
+						<input name="questReward" id="questReward" type="text" class="form-control" placeholder="Quest Reward" />
 					</div>
 					<div class="col-md col-12">
-						<label for="questDifficulty"><strong>Quest Status *</strong></label>
-						<select class="form-control" id="questType">
+						<label for="questStatus"><strong>Quest Status *</strong></label>
+						<select name="questStatus" class="form-control" id="questStatus">
 							<option value="incomplete">Incomplete</option>
 							<option value="complete">Complete</option>
 						</select>
