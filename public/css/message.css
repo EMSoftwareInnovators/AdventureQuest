@@ -1,0 +1,46 @@
+.actions {
+	display: flex;
+}
+.actions a,
+.actions div {
+	cursor: pointer;
+	transition: color 0.3s;
+}
+.actions a i,
+.actions div i {
+	color: #6c757d;
+}
+.actions a {
+	color: #000;
+}
+.actions .fa-star:hover {
+	color: #ffc107;
+}
+.actions div .fa-trash:hover {
+	color: #dc3545;
+}
+.actions a .fa-paper-plane:hover {
+	color: #007bff;
+}
+.actions a .fa-envelope-open-text:hover {
+	color: #28a745;
+}
+.subject {
+	font-weight: 700;
+	max-width: 60px;
+}
+.cell-overflow {
+	height: 20px;
+	overflow: hidden;
+}
+.favorite {
+	color: #ffc107 !important;
+}
+@media (max-width: 850px) {
+	.actions .fa-star:hover,
+	.actions a .fa-envelope-open-text:hover,
+	.actions a .fa-paper-plane:hover,
+	.actions div .fa-trash:hover {
+		color: #6c757d;
+	}
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="public/css/main.min.css" />
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"
+		></script>
+		<!-- Font Awesome -->
+		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="../public/favicon.ico" />
+		<title>Adventure Quest | Records</title>
+	</head>
+	<body>
+		<div class="container vh-100 d-flex align-items-center justify-content-center">
+			<div class="col-md-6 m-auto">
+				<h1 class="text-center"><img src="public/img/logoSM.png" alt="" class="img-fluid" /></h1>
+				<div class="card card-body shadow-lg rounded-lg">
+					<h1 class="mb-3 text-center display-4">Register</h1>
+					<%- include('./partials/errors.ejs') %>
+					<form action="/users/register" method="POST">
+						<div class="form-row mb-md-3">
+							<div class="col-md col-12 mb-3 mb-md-0">
+								<label for="fName">First Name</label>
+								<input type="text" id="fName" name="fName" class="form-control" placeholder="John" value="<%= typeof fName != 'undefined' ? fName : '' %>" />
+							</div>
+							<div class="col-md col-12 mb-3 mb-md-0">
+								<label for="lName">Last Name</label>
+								<input type="text" id="lName" name="lName" class="form-control" placeholder="Doe" value="<%= typeof lName != 'undefined' ? lName : '' %>" />
+							</div>
+						</div>
+
+						<div class="form-row mb-md-3">
+							<div class="col-md col-12 mb-3 mb-md-0">
+								<label for="email">Email</label>
+								<input type="email" id="email" name="email" class="form-control" placeholder="jDoe@mail.com" value="<%= typeof email != 'undefined' ? email : '' %>" />
+							</div>
+							<div class="col-md col-12 mb-3 mb-md-0">
+								<label for="phone">Phone</label>
+								<input type="text" id="phone" name="phone" class="form-control" placeholder="Phone #" value="<%= typeof phone != 'undefined' ? phone : '' %>" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="organization">Organization</label>
+							<input type="text" id="organization" name="organization" class="form-control" placeholder="Company Name" value="<%= typeof organization != 'undefined' ? organization : '' %>" />
+						</div>
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" id="username" name="username" class="form-control" placeholder="Jdoe12" value="<%= typeof username != 'undefined' ? username : '' %>" />
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" id="password" name="password" class="form-control" placeholder="******" value="<%= typeof password != 'undefined' ? password : '' %>" />
+						</div>
+						<div class="form-group">
+							<label for="password2">Confirm Password</label>
+							<input type="password" id="password2" name="password2" class="form-control" placeholder="******" value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">
+							Register
+						</button>
+					</form>
+					<p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

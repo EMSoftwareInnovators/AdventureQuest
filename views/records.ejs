@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- Bootstrap -->
-		<link rel="stylesheet" href="css/main.min.css" />
+		<link rel="stylesheet" href="public/css/main.min.css" />
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -19,9 +19,10 @@
 		<!-- Font Awesome -->
 		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
 		<!-- Scripts -->
-		<script src="scripts/mobile-nav.js" defer></script>
+		<script src="public/scripts/mobile-nav.js" defer></script>
+		<script src="public/scripts/records.js" defer></script>
 		<!-- Favicon -->
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico" />
 		<title>Adventure Quest | Records</title>
 	</head>
 	<body>
@@ -29,7 +30,7 @@
 		<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="img/logo.png" height="30" class="d-inline-block align-top" alt="" loading="lazy" />
+					<img src="public/img/logo.png" height="30" class="d-inline-block align-top" alt="" loading="lazy" />
 				</a>
 				<button
 					class="navbar-toggler"
@@ -46,13 +47,15 @@
 					<ul id="top-nav" class="navbar-nav w-100 justify-content-end">
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Johnny Bravo
+								<%= user.username %> 
 								<i class="fas fa-user ml-2"></i>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#"><i class="far fa-envelope mr-1"></i> Messages</a>
+								<a href="/records" class="dropdown-item"><i class="fas fa-home mr-1"></i> Home</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
+								<a class="dropdown-item" href="/messages"><i class="far fa-envelope mr-1"></i> Messages</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="/users/logout"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
 							</div>
 						</li>
 					</ul>
@@ -68,56 +71,52 @@
 					<a class="nav-link active" href="#">Patient Records</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="new.html">New Patient</a>
+					<a class="nav-link" href="/new">New Patient</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="quest.html">Quest Designer</a>
+					<a class="nav-link" href="/quest">Quest Designer</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="info.html">Account Info</a>
+					<a class="nav-link" href="/info">Account Info</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="help.html">Help</a>
+					<a class="nav-link" href="/help">Help</a>
 				</li>
 			</ul>
-			<form class="shadow-lg border border-top-0 p-3">
-				<div class="form-row mb-3">
+			<form class="shadow-lg border border-top-0 py-3 px-4">
+				<div class="form-row mb-3">	
 					<label for="patientRecord"><strong>Patient Records</strong></label>
 					<select class="form-control" id="patientRecord">
-						<option>Dynamically Filled in by Backend</option>
-						<option>Other option</option>
-						<option>Other option</option>
+						<% for(const patient of patients) { %> 
+							<option value="<%= patient.patientID %>" data-fName="<%= patient.fName %>" data-mName="<%= patient.mName %>" data-lName="<%= patient.lName %>" data-email="<%= patient.email %>" data-homePhone="<%= patient.homePhone %>" data-workPhone="<%= patient.workPhone %>" data-medication="<%= patient.medication %>" data-notes="<%= patient.notes %>"><%= `${patient.fName} ${patient.lName}` %></option>
+						<% } %> 
 					</select>
 				</div>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
-						<label class="text-dark" for="firstName"><strong>First Name</strong></label>
+						<label class="text-dark" for="firstName"><strong>First Name *</strong></label>
 						<input type="text" id="firstName" class="form-control" placeholder="John" />
 					</div>
 					<div class="col-md col-12">
-						<label class="text-dark" for="middleInitial"><strong>Middle Initial</strong></label>
-						<input type="text" id="middleInitial" class="form-control" placeholder="C" />
+						<label class="text-dark" for="middleName"><strong>Middle Name *</strong></label>
+						<input type="text" id="middleName" class="form-control" placeholder="Charlie" />
 					</div>
 					<div class="col-md col-12">
-						<label class="text-dark" for="lastName"><strong>Last Name</strong></label>
+						<label class="text-dark" for="lastName"><strong>Last Name *</strong></label>
 						<input type="text" id="lastName" class="form-control" placeholder="Doe" />
 					</div>
 				</div>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
-						<label class="text-dark" for="patientNumber"><strong>Patient Number</strong></label>
-						<input type="text" id="patientNumber" class="form-control" placeholder="##-#####" />
-					</div>
-					<div class="col-md col-12">
-						<label class="text-dark" for="homePhone"><strong>Home Phone</strong></label>
+						<label class="text-dark" for="homePhone"><strong>Home Phone *</strong></label>
 						<input type="text" id="homePhone" class="form-control" placeholder="###-###-####" />
 					</div>
 					<div class="col-md col-12">
-						<label class="text-dark" for="workPhone"><strong>Work Phone</strong></label>
+						<label class="text-dark" for="workPhone"><strong>Work Phone *</strong></label>
 						<input type="text" id="workPhone" class="form-control" placeholder="###-###-####" />
 					</div>
 					<div class="col-md col-12">
-						<label class="text-dark" for="email"><strong>Email Address</strong></label>
+						<label class="text-dark" for="email"><strong>Email Address *</strong></label>
 						<input type="email" id="email" class="form-control" placeholder="jDoe@mail.com" />
 					</div>
 				</div>
@@ -129,8 +128,10 @@
 					<label class="text-dark" for="patientNotes"><strong>Patient Notes</strong></label>
 					<textarea name="" id="patientNotes" rows="10" class="form-control" placeholder="Patient Notes..."></textarea>
 				</div>
-				<button id="submitBtn" type="submit" class="btn btn-success mr-1">Update Patient</button>
-				<button id="deleteBtn" type="submit" class="btn btn-danger mx-1">Delete Patient</button>
+				<div class="form-row w-100 d-flex justify-content-end">
+					<button id="submitBtn" type="submit" class="btn btn-success mr-1">Update Patient</button>
+					<button id="deleteBtn" type="submit" class="btn btn-danger mx-1">Delete Patient</button>
+				</div>
 			</form>
 		</div>
 		<!-- End Fields -->

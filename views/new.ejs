@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="public/css/main.min.css" />
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"
+		></script>
+		<!-- Font Awesome -->
+		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
+		<!-- Scripts -->
+		<script src="public/scripts/mobile-nav.js" defer></script>
+		<script src="public/scripts/new.js" defer></script>
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico" />
+		<title>Adventure Quest | New</title>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<a class="navbar-brand" href="#">
+					<img src="public/img/logo.png" height="30" class="d-inline-block align-top" alt="" loading="lazy" />
+				</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul id="top-nav" class="navbar-nav w-100 justify-content-end">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<%= user.username %> 
+								<i class="fas fa-user ml-2"></i>
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a href="/records" class="dropdown-item"><i class="fas fa-home mr-1"></i> Home</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="/messages"><i class="far fa-envelope mr-1"></i> Messages</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="/users/logout"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- End Navbar -->
+
+		<!-- Fields -->
+		<div class="container my-3">
+			<ul id="page-nav" class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link" href="/records">Patient Records</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" href="#">New Patient</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/quest">Quest Designer</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/info">Account Info</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/help">Help</a>
+				</li>
+			</ul>
+			<form action="/new" method="POST" class="shadow-lg border border-top-0 py-3 px-4">
+				<%- include('./partials/errors.ejs') %>
+				<div class="form-row mb-3">
+					<div class="col-md col-12">
+						<label class="text-dark" for="firstName"><strong>First Name *</strong></label>
+						<input name="fName" type="text" id="firstName" class="form-control" placeholder="John" value="<%= typeof fName != 'undefined' ? fName : '' %>"/>
+					</div>
+					<div class="col-md col-12">
+						<label class="text-dark" for="middleName"><strong>Middle Name *</strong></label>
+						<input name="mName" type="text" id="middleName" class="form-control" placeholder="Charlie" value="<%= typeof mName != 'undefined' ? mName : '' %>" />
+					</div>
+					<div class="col-md col-12">
+						<label class="text-dark" for="lastName"><strong>Last Name *</strong></label>
+						<input name="lName" type="text" id="lastName" class="form-control" placeholder="Doe" value="<%= typeof lName != 'undefined' ? lName : '' %>"/>
+					</div>
+				</div>
+				<div class="form-row mb-3">
+					<div class="col-md col-12">
+						<label class="text-dark" for="homePhone"><strong>Home Phone *</strong></label>
+						<input name="homePhone" type="text" id="homePhone" class="form-control" placeholder="###-###-####" value="<%= typeof homePhone != 'undefined' ? homePhone : '' %>"/>
+					</div>
+					<div class="col-md col-12">
+						<label class="text-dark" for="workPhone"><strong>Work Phone *</strong></label>
+						<input name="workPhone" type="text" id="workPhone" class="form-control" placeholder="###-###-####" value="<%= typeof workPhone != 'undefined' ? workPhone : '' %>"/>
+					</div>
+					<div class="col-md col-12">
+						<label class="text-dark" for="email"><strong>Email Address *</strong></label>
+						<input name="email" type="email" id="email" class="form-control" placeholder="jDoe@mail.com" value="<%= typeof email != 'undefined' ? email : '' %>"/>
+					</div>
+				</div>
+				<div class="form-row mb-3">
+					<label class="text-dark" for="medication"><strong>Medication</strong></label>
+					<textarea name="medication" id="medication" rows="7" class="form-control" placeholder="Medications..." value="<%= typeof medication != 'undefined' ? medication : '' %>"></textarea>
+				</div>
+				<div class="form-row mb-3">
+					<label class="text-dark" for="patient"><strong>Patient Notes</strong></label>
+					<textarea name="notes" id="patient" rows="10" class="form-control" placeholder="Patients..." value="<%= typeof notes != 'undefined' ? notes : '' %>"></textarea>
+				</div>
+				<div class="form-row w-100 d-flex justify-content-end">
+					<button id="submitBtn" type="submit" class="btn btn-success">Add Patient</button>
+				</div>
+			</form>
+		</div>
+		<!-- End Fields -->
+	</body>
+</html>
