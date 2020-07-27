@@ -87,35 +87,47 @@
 				<%- include('./partials/errors.ejs') %>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
-						<label for="firstName"><strong>First Name</strong></label>
+						<label for="username"><strong>Username *</strong></label>
+						<input id="username" name="username" type="text" class="form-control" placeholder="Username" value="<%= user.username %>">
+					</div>
+				</div>
+				<div class="form-row mb-3">
+					<div class="col-md col-12">
+						<label for="firstName"><strong>First Name *</strong></label>
 						<input id="firstName" name="fName" type="text" class="form-control" placeholder="John" value="<%= user.fName %>" />
 					</div>
 					<div class="col-md col-12">
-						<label for="lastName"><strong>Last Name</strong></label>
+						<label for="lastName"><strong>Last Name *</strong></label>
 						<input type="text" id="lastName" name="lName" class="form-control" placeholder="Doe" value="<%= user.lName %>"/>
 					</div>
 				</div>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
-						<label for="phone"><strong>Contact Number</strong></label>
+						<label for="phone"><strong>Contact Number *</strong></label>
 						<input type="text" id="phone" name="phone" class="form-control" placeholder="###-###-####" value="<%= user.phone %>"/>
 					</div>
 					<div class="col-md col-12">
-						<label for="email"><strong>Email Address</strong></label>
+						<label for="email"><strong>Email Address *</strong></label>
 						<input type="text" id="email" name="email" class="form-control" placeholder="Johndoe@mail.com" value="<%= user.email %>"/>
-					</div>
-					<div class="col-md col-12">
-						<label for="password"><strong>Password</strong></label>
-						<input type="text" id="password" name="password" class="form-control" placeholder="********" />
 					</div>
 				</div>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
-						<label for="organization"><strong>Organization</strong></label>
+						<label for="password"><strong>Update Password</strong></label>
+						<input id="password" name="password" type="password" class="form-control" placeholder="******" />
+					</div>
+					<div class="col-md col-12">
+						<label for="password2"><strong>Confirm New Password</strong></label>
+						<input id="password2" name="password2" type="password" class="form-control" placeholder="******" />
+					</div>
+				</div>
+				<div class="form-row mb-3">
+					<div class="col-md col-12">
+						<label for="organization"><strong>Organization *</strong></label>
 						<input type="text" id="organization" name="org" class="form-control" placeholder="Company Name" value="<%= user.organization %>"/>
 					</div>
 				</div>
-				<div class="form-row w-100 d-flex justify-content-center">
+				<div class="form-row w-100 d-flex justify-content-end">
 					<button id="submitBtn" type="submit" class="btn btn-success">Update Info</button>
 				</div>
 			</form>
