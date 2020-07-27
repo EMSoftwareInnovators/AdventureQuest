@@ -89,8 +89,14 @@
 			<form class="shadow-lg border border-top-0 py-3 px-4">
 				<div class="form-row mb-3">
 					<label for="patientRecord"><strong>Patient Name *</strong></label>
-					<select class="form-control" id="patientName">
-						<option value="1">1</option>
+					<select class="form-control" id="patientName">\
+						<% if (patients.length == 0) { %>
+							<option value="<%= null %>">No patients assigned</option>
+						<% } else { %>
+							<% for(const patient of patients) { %>
+								<option value="<%= patient.patientID %>"><%= `${patient.fName} ${patient.lName}` %> </option>
+							<% } %> 
+						<% } %> 
 					</select>
 				</div>
 				<div class="form-row mb-3">
