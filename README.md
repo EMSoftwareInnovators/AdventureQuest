@@ -1,6 +1,6 @@
 # To-Do
 
--   End to end encryption on all pages: Endcrypt OR crypto ??Let Encrypt??
+-   Split up all of the individual logged in pages into their own routes as 300 lines is looking a little crowded now
 
 -   Retain user input on invalid submission on login.ejs
 
