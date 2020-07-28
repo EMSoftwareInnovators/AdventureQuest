@@ -66,7 +66,7 @@ CREATE TABLE `users_medical` (
   `phone` varchar(10) NOT NULL,
   `moderator` tinyint(4) NOT NULL DEFAULT 0,
   `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` varchar(500) NOT NULL,
   `organization` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
