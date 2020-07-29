@@ -16,6 +16,16 @@ router.get("/", ensureAuthenticated, (req, res) => {
     });
 });
 
-router.post("/", ensureAuthenticated, (req, res) => {});
+router.post("/", ensureAuthenticated, (req, res) => {
+    const { fName, mName, lName, homePhone, workPhone, email, medication, notes, action } = req.body;
+
+    if (action === "update") {
+        res.send("update");
+    }
+
+    if (action === "delete") {
+        res.send("delete");
+    }
+});
 
 module.exports = router;
