@@ -17,13 +17,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // express session middleware
 app.use(
-    session({
-        // secret needs to be an array of random chars in deployment
-        secret: "secret",
-        store: sessionStore,
-        resave: true,
-        saveUninitialized: true,
-    })
+	session({
+		// secret needs to be an array of random chars in deployment
+		secret: "secret",
+		store: sessionStore,
+		resave: true,
+		saveUninitialized: true
+	})
 );
 
 // passport middleware
@@ -35,13 +35,12 @@ app.use(flash());
 
 // global vars
 app.use((req, res, next) => {
-    res.locals.success_msg = req.flash("success_msg");
-    res.locals.error_msg = req.flash("error_msg");
-    next();
+	res.locals.success_msg = req.flash("success_msg");
+	res.locals.error_msg = req.flash("error_msg");
+	next();
 });
 
 // establish routes
-// app.use("/", require("./routes/index"));
 app.use("/records", require("./routes/records"));
 app.use("/patient", require("./routes/patient"));
 app.use("/quest", require("./routes/quest"));
