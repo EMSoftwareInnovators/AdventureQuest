@@ -11,6 +11,7 @@ const form = document.querySelector("#form");
 const updateBtn = document.querySelector("#updateBtn");
 const deleteBtn = document.querySelector("#deleteBtn");
 const action = document.querySelector("#action");
+const mistake = document.querySelector("#mistake").value;
 
 const updateFields = () => {
     const patient = patientRecord.options[patientRecord.selectedIndex];
@@ -70,3 +71,16 @@ deleteBtn.addEventListener("click", () => {
 });
 
 updateFields();
+
+if (mistake === "true") {
+    console.log(patientRecord.getAttribute("data-selected"));
+    patientRecord.value = patientRecord.getAttribute("data-selected");
+    firstName.value = firstName.getAttribute("data-selected");
+    middleName.value = middleName.getAttribute("data-selected");
+    lastName.value = lastName.getAttribute("data-selected");
+    homePhone.value = formatPhone(homePhone.getAttribute("data-selected"));
+    workPhone.value = formatPhone(workPhone.getAttribute("data-selected"));
+    email.value = email.getAttribute("data-selected");
+    meds.value = meds.getAttribute("data-selected");
+    notes.value = notes.getAttribute("data-selected");
+}

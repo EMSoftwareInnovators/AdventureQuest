@@ -17,13 +17,87 @@ router.get("/", ensureAuthenticated, (req, res) => {
 });
 
 router.post("/", ensureAuthenticated, (req, res) => {
-    const { fName, mName, lName, homePhone, workPhone, email, medication, notes, action } = req.body;
+    const { patientID, fName, mName, lName, email, medication, notes, action } = req.body;
+    let unparsedHomePhone = req.body.homePhone;
+    let unparsedWorkPhone = req.body.workPhone;
 
-    if (action === "update") {
-        res.send("update");
+    // parse phone numbers
+    while (unparsedHomePhone.includes("-")) {
+        unparsedHomephone = unparsedHomePhone.replace("-", "");
+    }
+    const homePhone = unparsedHomePhone;
+    while (unparsedWorkPhone.includes("-")) {
+        unparsedWorkPhone = unparsedWorkPhone.replace("-", "");
+    }
+    const workPhone = unparsedWorkPhone;
+
+    // validation
+    const errors = [];
+
+    if (!patientID || !fName || !mName || !lName || !homePhone || !workPhone || !email || !medication || !notes || !action) {
+        errors.push({ msg: "* Indicates a required field" });
     }
 
-    if (action === "delete") {
+    if (fName.length > 50) {
+        errors.push({ msg: "First Name cannot exceed 50 characters!" });
+    }
+
+    if (mName.length > 50) {
+        errors.push({ msg: "Middle Name cannot exceed 50 characters!" });
+    }
+
+    if (lName.length > 50) {
+        errors.push({ msg: "Last Name cannot exceed 50 characters!" });
+    }
+
+    if (homePhone.length > 10) {
+        errors.push({ msg: "Home Phone cannot exceed 10!" });
+    }
+
+    if (workPhone.length > 10) {
+        errors.push({ msg: "Work Phone cannot exceed 10!" });
+    }
+
+    if (medication.length > 1500) {
+        errors.push({ msg: "Medication cannot exceed 1500 characters!" });
+    }
+
+    if (notes.legth > 1500) {
+        errors.push({ msg: "Notes cannot exceed 1500 characters!" });
+    }
+
+    if (errors.length > 0) {
+        db.query(`SELECT * FROM users_patients WHERE doctorID = ?`, [req.user.doctorID], (err, results) => {
+            if (err) console.log(err);
+            console.log(errors);
+            res.render("records", {
+                errors,
+                user: req.user,
+                patients: results,
+                patientID,
+                fName,
+                mName,
+                lName,
+                homePhone,
+                workPhone,
+                email,
+                medication,
+                notes,
+            });
+        });
+    } else if (action === "update") {
+        res.send("update");
+        // db.query(
+        //     `UPDATE users_patients
+        //     SET fName = ?, mName = ?, lName = ?, homePhone = ?, workPhone = ?, email = ?, medication = ?, notes = ?
+        //     WHERE patientID = ?`,
+        //     [fName, mName, lName, homePhone, workPhone, email, medication, notes, patientID],
+        //     (err, results) => {
+        //         if (err) console.log(err);
+        //         res.redirect("records");
+        //     }
+        // );
+    } else if (action === "delete") {
         res.send("delete");
     }
 });
