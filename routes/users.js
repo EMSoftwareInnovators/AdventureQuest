@@ -158,20 +158,44 @@ router.post("/register", (req, res) => {
 						);
 					});
 				}
+
+				// insert into users
+				function insertUsers(username, password, email) {
+					return new Promise((resolve, reject) => {
+						db.query(
+							`INSERT INTO users (username, password, email)
+							VALUES(?, ?, ?)`,
+							[username, password, email],
+							(err, results) => {
+								if (err) console.log(err);
+								resolve();
+							}
+						);
+					});
+				}
+
+				// insert into users_medical
+				function insertUsersMedical(username, fName, lName, phone, organization) {
+					db.query(`SELECT userID FROM users WHERE username = ?`, [username], (err, results) => {
+						if (err) console.log(err);
+						db.query(
+							`INSERT INTO users_medical (userID, fName, lName, phone, organization)
+								VALUES(?, ?, ?, ?, ?)`,
+							[results[0].userID, fName, lName, phone, organization],
+							(err, results) => {
+								if (err) console.log(err);
+								req.flash("success_msg", "You successfully registered. You may now log in.");
+								res.redirect("/users/login");
+							}
+						);
+					});
+				}
+
 				// Insert into DB
 				hash().then((hashedPassword) => {
-					db.query(
-						`INSERT INTO users_medical (fName, lName, phone, organization )
-								VALUES(?, ?, ?, ?)`,
-						[fName, lName, phone, organization]
-					);
-					db.query(
-						`INSERT INTO users (username, password, email)
-								VALUES(?, ?, ?, ?, ?, ?, ?)`,
-						[username, hashedPassword, email]
-					);
-					req.flash("success_msg", "You successfully registered. You may now log in.");
-					res.redirect("/users/login");
+					insertUsers(username, hashedPassword, email).then(() => {
+						insertUsersMedical(username, fName, lName, phone, organization);
+					});
 				});
 			}
 		});
