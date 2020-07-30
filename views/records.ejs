@@ -89,10 +89,11 @@
 					<label for="patientRecord"><strong>Patient Records</strong></label>
 					<select name="patientID" class="form-control" id="patientRecord" data-selected="<%= (typeof patientID !== 'undefined') ? patientID : '' %>">
 						<% for(const patient of patients) { %> 
-							<option value="<%= patient.patientID %>" data-fName="<%= patient.fName %>" data-mName="<%= patient.mName %>" data-lName="<%= patient.lName %>" data-email="<%= patient.email %>" data-homePhone="<%= patient.homePhone %>" data-workPhone="<%= patient.workPhone %>" data-medication="<%= patient.medication %>" data-notes="<%= patient.notes %>"><%= `${patient.fName} ${patient.lName}` %></option>
+							<option value="<%= patient.patientID %>" data-userID="<%= patient.userID %>" data-fName="<%= patient.fName %>" data-mName="<%= patient.mName %>" data-lName="<%= patient.lName %>" data-email="<%= patient.email %>" data-homePhone="<%= patient.homePhone %>" data-workPhone="<%= patient.workPhone %>" data-medication="<%= patient.medication %>" data-notes="<%= patient.notes %>"><%= `${patient.fName} ${patient.lName}` %></option>
 						<% } %> 
 					</select>
 				</div>
+				<input type="hidden" name="userID" id="userID">
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
 						<label class="text-dark" for="firstName"><strong>First Name *</strong></label>

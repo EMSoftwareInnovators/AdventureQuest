@@ -10,14 +10,14 @@ router.use("/public", express.static("public"));
 // patient record page
 router.get("/", ensureAuthenticated, (req, res) => {
 	// get all patients assigned to doctor
-	db.query(`SELECT * FROM users_patients WHERE doctorID = ?`, [req.user.doctorID], (err, results) => {
+	db.query(`SELECT * FROM users_patients JOIN users ON users_patients.userID = users.userID WHERE doctorID = ?`, [req.user.doctorID], (err, results) => {
 		if (err) console.log(err);
 		res.render("records", { user: req.user, patients: results });
 	});
 });
 
 router.post("/", ensureAuthenticated, (req, res) => {
-	const { patientID, fName, mName, lName, email, medication, notes, action } = req.body;
+	const { patientID, userID, fName, mName, lName, email, medication, notes, action } = req.body;
 	let unparsedHomePhone = req.body.homePhone;
 	let unparsedWorkPhone = req.body.workPhone;
 
@@ -67,7 +67,7 @@ router.post("/", ensureAuthenticated, (req, res) => {
 	}
 
 	if (errors.length > 0) {
-		db.query(`SELECT * FROM users_patients WHERE doctorID = ?`, [req.user.doctorID], (err, results) => {
+		db.query(`SELECT * FROM users_patients JOIN users ON users_patients.userID = users.userID WHERE doctorID = ?`, [req.user.doctorID], (err, results) => {
 			if (err) console.log(err);
 			res.render("records", {
 				errors,
@@ -87,13 +87,16 @@ router.post("/", ensureAuthenticated, (req, res) => {
 	} else if (action === "update") {
 		db.query(
 			`UPDATE users_patients
-		    SET fName = ?, mName = ?, lName = ?, homePhone = ?, workPhone = ?, email = ?, medication = ?, notes = ?
-		    WHERE patientID = ?`,
-			[fName, mName, lName, homePhone, workPhone, email, medication, notes, patientID],
+		    SET fName = ?, mName = ?, lName = ?, homePhone = ?, workPhone = ?, medication = ?, notes = ?
+			WHERE patientID = ?`,
+			[fName, mName, lName, homePhone, workPhone, medication, notes, patientID],
 			(err, results) => {
 				if (err) console.log(err);
-				req.flash("success_msg", `${fName} ${lName}'s record updated!`);
-				res.redirect("records");
+				db.query(`UPDATE users SET email = ? WHERE userID = ?`, [email, userID], (err, results) => {
+					if (err) console.log(err);
+					req.flash("success_msg", `${fName} ${lName}'s record updated!`);
+					res.redirect("records");
+				});
 			}
 		);
 	} else if (action === "delete") {

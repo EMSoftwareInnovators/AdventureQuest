@@ -7,6 +7,7 @@ const workPhone = document.querySelector("#workPhone");
 const email = document.querySelector("#email");
 const meds = document.querySelector("#medicationNotes");
 const notes = document.querySelector("#patientNotes");
+const userID = document.querySelector("#userID");
 const form = document.querySelector("#form");
 const updateBtn = document.querySelector("#updateBtn");
 const deleteBtn = document.querySelector("#deleteBtn");
@@ -15,6 +16,7 @@ const mistake = document.querySelector("#mistake").value;
 
 const updateFields = () => {
 	const patient = patientRecord.options[patientRecord.selectedIndex];
+	userID.value = patient.getAttribute("data-userID");
 	firstName.value = patient.getAttribute("data-fName");
 	middleName.value = patient.getAttribute("data-mName");
 	lastName.value = patient.getAttribute("data-lName");
