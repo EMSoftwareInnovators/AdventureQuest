@@ -88,13 +88,16 @@ router.post("/", ensureAuthenticated, (req, res) => {
                 // update everything EXCEPT password
                 db.query(
                     `UPDATE users_medical 
-                        SET username = ?, fName = ?, lName = ?, email = ?, phone = ?, organization = ?
-                        WHERE doctorID = ?`,
-                    [username, fName, lName, email, phone, org, req.user.doctorID],
+                    SET fName = ?, lName = ?, phone = ?, organization = ?
+                    WHERE doctorID = ?`,
+                    [fName, lName, phone, org, req.user.doctorID],
                     (err, results) => {
                         if (err) console.log(err);
-                        req.flash("success_msg", "Account Updated");
-                        res.redirect("/info");
+                        db.query(`UPDATE users SET username = ?, email = ? WHERE userID = ?`, [username, email, req.user.userID], (err, results) => {
+                            if (err) console.log(err);
+                            req.flash("success_msg", "Account Updated");
+                            res.redirect("/info");
+                        });
                     }
                 );
             } else {
@@ -112,13 +115,16 @@ router.post("/", ensureAuthenticated, (req, res) => {
                 hash().then((hashedPassword) => {
                     db.query(
                         `UPDATE users_medical 
-                        SET username = ?, fName = ?, lName = ?, email = ?, phone = ?, organization = ?, password = ?
+                        SET fName = ?, lName = ?, phone = ?, organization = ?
                         WHERE doctorID = ?`,
-                        [username, fName, lName, email, phone, org, hashedPassword, req.user.doctorID],
+                        [fName, lName, phone, org, req.user.doctorID],
                         (err, results) => {
                             if (err) console.log(err);
-                            req.flash("success_msg", "Account Updated");
-                            res.redirect("/info");
+                            db.query(`UPDATE users SET username = ?, email = ?, password = ? WHERE userID = ?`, [username, email, hashedPassword, req.user.userID], (err, results) => {
+                                if (err) console.log(err);
+                                req.flash("success_msg", "Account Updated");
+                                res.redirect("/info");
+                            });
                         }
                     );
                 });
@@ -132,7 +138,7 @@ router.post("/", ensureAuthenticated, (req, res) => {
         } else {
             // check if username exists
             const userExists = new Promise((resolve, reject) => {
-                db.query("SELECT username FROM users_medical WHERE username = ?", [username], (err, results) => {
+                db.query("SELECT username FROM users WHERE username = ?", [username], (err, results) => {
                     if (results.length > 0) {
                         resolve({ match: true, msg: "That username is already registered!" });
                     } else {

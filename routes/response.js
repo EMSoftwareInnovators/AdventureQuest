@@ -9,6 +9,10 @@ router.use("/public", express.static("public"));
 
 // message response page
 router.get("/", ensureAuthenticated, (req, res) => {
+    res.render("messages", { user: req.user });
+});
+
+router.get("/:id", ensureAuthenticated, (req, res) => {
     res.render("response", { user: req.user });
 });
 
