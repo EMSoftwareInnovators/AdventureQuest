@@ -84,9 +84,10 @@
 				</li>
 			</ul>
 			<form id="form" action="/records" method="POST" class="shadow-lg border border-top-0 py-3 px-4">
+				<%- include('./partials/errors.ejs') %>
 				<div class="form-row mb-3">	
 					<label for="patientRecord"><strong>Patient Records</strong></label>
-					<select class="form-control" id="patientRecord">
+					<select name="patientID" class="form-control" id="patientRecord" data-selected="<%= (typeof patientID !== 'undefined') ? patientID : '' %>">
 						<% for(const patient of patients) { %> 
 							<option value="<%= patient.patientID %>" data-fName="<%= patient.fName %>" data-mName="<%= patient.mName %>" data-lName="<%= patient.lName %>" data-email="<%= patient.email %>" data-homePhone="<%= patient.homePhone %>" data-workPhone="<%= patient.workPhone %>" data-medication="<%= patient.medication %>" data-notes="<%= patient.notes %>"><%= `${patient.fName} ${patient.lName}` %></option>
 						<% } %> 
@@ -95,40 +96,41 @@
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
 						<label class="text-dark" for="firstName"><strong>First Name *</strong></label>
-						<input name="fName" type="text" id="firstName" class="form-control" placeholder="First Name" />
+						<input name="fName" type="text" id="firstName" class="form-control" placeholder="First Name" data-selected="<%= (typeof fName !== 'undefined') ? fName : '' %>" />
 					</div>
 					<div class="col-md col-12">
 						<label class="text-dark" for="middleName"><strong>Middle Name *</strong></label>
-						<input name="mName" type="text" id="middleName" class="form-control" placeholder="Middle Name" />
+						<input name="mName" type="text" id="middleName" class="form-control" placeholder="Middle Name" data-selected="<%= (typeof mName !== 'undefined') ? mName : '' %>" />
 					</div>
 					<div class="col-md col-12">
 						<label class="text-dark" for="lastName"><strong>Last Name *</strong></label>
-						<input name="lName" type="text" id="lastName" class="form-control" placeholder="Last Name" />
+						<input name="lName" type="text" id="lastName" class="form-control" placeholder="Last Name" data-selected="<%= (typeof lName !== 'undefined') ? lName : '' %>" />
 					</div>
 				</div>
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
 						<label class="text-dark" for="homePhone"><strong>Home Phone *</strong></label>
-						<input name="homePhone" type="text" id="homePhone" class="form-control" placeholder="Home Phone - ###-###-####" />
+						<input name="homePhone" type="text" id="homePhone" class="form-control" placeholder="Home Phone - ###-###-####" data-selected="<%= (typeof homePhone !== 'undefined') ? homePhone : '' %>" />
 					</div>
 					<div class="col-md col-12">
 						<label class="text-dark" for="workPhone"><strong>Work Phone *</strong></label>
-						<input name="workPhone" type="text" id="workPhone" class="form-control" placeholder="Work Phone - ###-###-####" />
+						<input name="workPhone" type="text" id="workPhone" class="form-control" placeholder="Work Phone - ###-###-####" data-selected="<%= (typeof workPhone !== 'undefined') ? workPhone : '' %>" />
 					</div>
 					<div class="col-md col-12">
 						<label class="text-dark" for="email"><strong>Email Address *</strong></label>
-						<input name="email" type="email" id="email" class="form-control" placeholder="Email Address" />
+						<input name="email" type="email" id="email" class="form-control" placeholder="Email Address" data-selected="<%= (typeof email !== 'undefined') ? email : '' %>" />
 					</div>
 				</div>
 				<div class="form-row mb-3">
 					<label class="text-dark" for="medicationNotes"><strong>Medication Notes</strong></label>
-					<textarea name="medication" id="medicationNotes" rows="7" class="form-control" placeholder="Medication Notes..."></textarea>
+					<textarea name="medication" id="medicationNotes" rows="7" class="form-control" placeholder="Medication Notes..." data-selected="<%= (typeof medication !== 'undefined') ? medication : '' %>"></textarea>
 				</div>
 				<div class="form-row mb-3">
 					<label class="text-dark" for="patientNotes"><strong>Patient Notes</strong></label>
-					<textarea name="notes" id="patientNotes" rows="10" class="form-control" placeholder="Patient Notes..."></textarea>
+					<textarea name="notes" id="patientNotes" rows="10" class="form-control" placeholder="Patient Notes..." data-selected="<%= (typeof notes !== 'undefined') ? notes : '' %>"></textarea>
 				</div>
 				<input id="action" type="hidden" name="action" value="">
+				<input id="mistake" type="hidden" value="<%= (typeof errors !== 'undefined') ? 'true' : '' %>">
 				<div class="form-row w-100 d-flex justify-content-end">
 					<button id="updateBtn" class="btn btn-success mr-1">Update Patient</button>
 					<button id="deleteBtn" class="btn btn-danger mx-1">Delete Patient</button>
