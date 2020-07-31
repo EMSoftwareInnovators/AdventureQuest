@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2020 at 01:25 AM
+-- Generation Time: Jul 31, 2020 at 05:47 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -33,7 +33,7 @@ CREATE TABLE `messages` (
   `messageID` int(11) NOT NULL,
   `threadID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
-  `message` varchar(1500) NOT NULL,
+  `message` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -42,8 +42,10 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`messageID`, `threadID`, `userID`, `message`, `timestamp`) VALUES
-(5, 3, 14, 'Hey I can\'t think of a good subject line, could you help me out? I\'m a fucking retard and I can\'t do shit.', '2020-07-30 23:23:01'),
-(6, 4, 15, 'Hey I need to reschedule our appointment tomorrow for Wed @ 4:30.\r\n\r\nThanks,\r\nJane Deer', '2020-07-30 23:23:01');
+(1, 1, 14, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor i', '2020-07-31 03:01:24'),
+(2, 2, 15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor i', '2020-07-31 03:01:24'),
+(3, 3, 14, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor i', '2020-07-31 03:01:52'),
+(4, 1, 6, 'Fuck you quit sending me messages...', '2020-07-31 03:03:41');
 
 -- --------------------------------------------------------
 
@@ -91,8 +93,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
-('CWxUXoE4UE9BRy2ZxNolvUVF5-0V57db', 1596231840, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{},\"passport\":{\"user\":6}}'),
-('qn1xvj_U58ElF_gsk_gBSMm2pj1We5-M', 1596236835, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{},\"passport\":{\"user\":6}}');
+('THPE95x5qNEPii5X8F0d4KcNiD6rqcnQ', 1596252940, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{},\"passport\":{\"user\":6}}');
 
 -- --------------------------------------------------------
 
@@ -104,8 +105,8 @@ CREATE TABLE `threads` (
   `threadID` int(11) NOT NULL,
   `doctorID` int(11) NOT NULL,
   `patientID` int(11) NOT NULL,
-  `subject` varchar(255) NOT NULL,
-  `favorite` tinyint(4) NOT NULL DEFAULT 0
+  `subject` varchar(75) NOT NULL,
+  `favorite` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -113,8 +114,9 @@ CREATE TABLE `threads` (
 --
 
 INSERT INTO `threads` (`threadID`, `doctorID`, `patientID`, `subject`, `favorite`) VALUES
-(3, 22, 7, 'Need Help With My Subject Line', 1),
-(4, 22, 8, 'Need to reschedule appointment', 0);
+(1, 22, 7, 'Harcourt & John', 0),
+(2, 22, 8, 'Harcourt & Jane', 0),
+(3, 25, 7, 'Bill & John', 0);
 
 -- --------------------------------------------------------
 
@@ -254,7 +256,7 @@ ALTER TABLE `users_patients`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `messageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `messageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `quests`
@@ -266,7 +268,7 @@ ALTER TABLE `quests`
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `threadID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `threadID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
