@@ -76,7 +76,7 @@ const mobileFormat = () => {
             <i class="far fa-question-circle"></i> Help
         </a>
     </li>
-    `;
+	`;
 };
 
 const wideFormat = () => {

@@ -27,11 +27,6 @@
 }
 .subject {
 	font-weight: 700;
-	max-width: 60px;
-}
-.cell-overflow {
-	height: 20px;
-	overflow: hidden;
 }
 .favorite {
 	color: #ffc107 !important;

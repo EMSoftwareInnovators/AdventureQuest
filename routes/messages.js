@@ -9,7 +9,40 @@ router.use("/public", express.static("public"));
 
 // messages page
 router.get("/", ensureAuthenticated, (req, res) => {
-    res.render("messages", { user: req.user });
+	db.query(`SELECT * FROM threads JOIN messages ON threads.threadID = messages.threadID WHERE doctorID = ?`, [req.user.doctorID], (err, results) => {
+		if (err) console.log(err);
+		const threads = [];
+		const inbox = [];
+		for (const result of results) {
+			if (!threads.includes(result.threadID)) {
+				threads.push(result.threadID);
+				inbox.push({
+					threadID: result.threadID,
+					doctorID: result.doctorID,
+					patientID: result.patientID,
+					subject: result.subject,
+					favorite: result.favorite,
+					messages: [
+						{
+							messageID: result.messageID,
+							timestamp: result.timestamp,
+							message: result.message
+						}
+					]
+				});
+			} else {
+				const i = threads.indexOf(result.threadID);
+				inbox[i].messages.push({
+					messageID: result.messageID,
+					timestamp: result.timestamp,
+					message: result.message
+				});
+			}
+		}
+		console.log(inbox);
+
+		res.send("messages...");
+	});
 });
 
 module.exports = router;

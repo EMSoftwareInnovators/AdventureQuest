@@ -67,7 +67,7 @@
 
 		<!-- Messages -->
 		<div id="container" class="container px-0">
-			<table class="table my-5 table-hover table-responsive">
+			<table class="table table-hover my-5">
 				<thead class="thead-dark">
 					<tr>
 						<th>Actions</th>
@@ -76,88 +76,25 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td class="actions">
-							<div><i class="fas fa-star mr-2"></i></div>
-							<a href="/response"><i class="fas fa-paper-plane mx-2"></i></a>
-							<div><i class="fas fa-trash mx-2"></i></div>
-						</td>
-						<td>
-							<div class="subject cell-overflow">
-								Subject
-							</div>
-						</td>
-						<td>
-							<div class="cell-overflow">
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo cum omnis provident. Officia eius debitis consectetur, assumenda fugit vero mollitia cum magni deleniti modi ipsa dolor
-								vitae ullam molestiae ab, quasi laborum, dignissimos iure esse. Autem officia quam, totam corrupti non consectetur exercitationem nulla vitae, aspernatur quibusdam nam praesentium
-								reprehenderit ipsa hic et nihil ut expedita ipsam dolorum. Debitis placeat modi architecto minus ab consequatur in odio quis repellat, tempora temporibus nihil incidunt consequuntur,
-								cupiditate similique laborum nulla, earum eligendi culpa eum? Dolorem exercitationem nisi delectus laborum at officiis itaque repudiandae molestias, vitae nam explicabo magni, esse
-								eaque tenetur neque maiores pariatur eveniet distinctio, officia minus earum omnis nobis. Quas quo, saepe nulla itaque molestiae consequatur corrupti similique ab? Commodi, cum!
-								Voluptatem sunt odit deserunt atque nemo minus officia, voluptate praesentium quam quae architecto exercitationem quasi tempora ipsam ipsa. Hic tenetur repellat neque! Itaque mollitia
-								totam deserunt aspernatur omnis repellat animi, ipsum tenetur veritatis debitis accusantium rerum autem! Et libero hic vitae beatae quam iste consequuntur, nemo aliquam quos nam
-								reprehenderit animi explicabo excepturi aperiam amet nobis eligendi iure laborum est rem! In esse aperiam omnis officiis vero totam ducimus ad eum veniam voluptas quas labore molestias
-								maxime accusantium voluptatibus doloremque minus, cupiditate exercitationem dolores amet accusamus autem harum, explicabo enim! Quisquam dolorem vitae ratione voluptatum cumque,
-								aperiam sit vel magnam tempore officia nulla debitis error asperiores nesciunt suscipit laboriosam non sequi maiores ut ipsam distinctio itaque at iure. Non vero facilis, modi
-								distinctio dolorum quidem in id consequatur reprehenderit fugit! Adipisci aperiam dolorum ullam nostrum nulla facilis est delectus maiores soluta culpa hic, deserunt possimus nisi
-								veniam eligendi voluptatum. Optio temporibus aliquid sit tenetur inventore. Consectetur qui, harum voluptate sed ullam inventore cumque blanditiis veritatis quisquam totam rerum
-								aspernatur officia in? Facilis, sit excepturi nulla quam repellendus necessitatibus vero.
-							</div>
-						</td>
-					</tr>
-
-					<tr>
-						<td class="actions">
-							<div><i class="fas fa-star mr-2"></i></div>
-							<a href="/response"><i class="fas fa-paper-plane mx-2"></i></a>
-							<div><i class="fas fa-trash mx-2"></i></div>
-						</td>
-						<td>
-							<div class="subject cell-overflow">
-								Ahhhhhh
-							</div>
-						</td>
-						<td>
-							<div class="cell-overflow">
-								Just a few words.
-							</div>
-						</td>
-					</tr>
-
-					<tr>
-						<td class="actions">
-							<div><i class="fas fa-star mr-2"></i></div>
-							<a href="/response"><i class="fas fa-paper-plane mx-2"></i></a>
-							<div><i class="fas fa-trash mx-2"></i></div>
-						</td>
-						<td>
-							<div class="subject cell-overflow">
-								no-msg
-							</div>
-						</td>
-						<td>
-							<div class="cell-overflow"></div>
-						</td>
-					</tr>
-
-					<tr>
-						<td class="actions">
-							<div><i class="fas fa-star mr-2"></i></div>
-							<a href="/response"><i class="fas fa-paper-plane mx-2"></i></a>
-							<div><i class="fas fa-trash mx-2"></i></div>
-						</td>
-						<td>
-							<div class="subject cell-overflow">
-								Help thereIsThisIncrediblyLongSingleWordWithNoSpaces
-							</div>
-						</td>
-						<td>
-							<div class="cell-overflow">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eveniet porro tenetur sunt consequatur dicta quo cupiditate hic at ad, ex placeat ab laborum unde deleniti dolorum
-								ea enim dolor!
-							</div>
-						</td>
-					</tr>
+					<% for(const message of messages) { %> 
+						<tr>
+							<td class="actions">
+								<div><i class="fas fa-star mr-2"></i></div>
+								<a href="<%= `/response/${message.threadID}` %>"><i class="fas fa-paper-plane mx-2"></i></a>
+								<div><i class="fas fa-trash mx-2"></i></div>
+							</td>
+							<td>
+								<div class="subject">
+									<%= message.subject.slice(0, 50) %> 
+								</div>
+							</td>
+							<td colspan="16">
+								<div>
+									<%= message.message.slice(0, 100) %> 
+								</div>
+							</td>
+						</tr>
+					<% } %> 
 				</tbody>
 			</table>
 		</div>
