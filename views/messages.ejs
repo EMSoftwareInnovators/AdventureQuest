@@ -76,7 +76,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% for(const message of messages) { %> 
+					<% for(const message of inbox) { %> 
 						<tr>
 							<td class="actions">
 								<div><i class="fas fa-star mr-2"></i></div>
@@ -90,7 +90,7 @@
 							</td>
 							<td colspan="16">
 								<div>
-									<%= message.message.slice(0, 100) %> 
+									<%= message.messages[(message.messages.length - 1)].message.slice(0, 100) %> 
 								</div>
 							</td>
 						</tr>
