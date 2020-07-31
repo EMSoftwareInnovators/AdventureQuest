@@ -17,7 +17,7 @@
 			crossorigin="anonymous"
 		></script>
 		<!-- Font Awesome -->
-		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="public/css/all.min.css">
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="../public/favicon.ico" />
 		<title>Adventure Quest | Records</title>
@@ -27,7 +27,7 @@
 			<div class="col-md-6 m-auto">
 				<h1 class="text-center"><img src="public/img/logoSM.png" alt="" class="img-fluid" /></h1>
 				<div class="card card-body rounded-lg shadow-lg">
-					<h1 class="mb-3 text-center display-4">Login</h1>
+					<h1 class="mb-3 text-center display-4">Login <i class="fas fa-sign-in-alt"></i></h1>
 					<%- include('./partials/errors.ejs') %>
 					<form action="/users/login" method="POST">
 						<div class="form-group">
