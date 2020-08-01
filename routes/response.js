@@ -9,7 +9,7 @@ router.use("/public", express.static("public"));
 
 // message response page
 router.get("/", ensureAuthenticated, (req, res) => {
-    res.redirect("messages");
+    res.render("response", { user: req.user });
 });
 
 router.get("/:id", ensureAuthenticated, (req, res) => {
