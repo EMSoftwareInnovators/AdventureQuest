@@ -9,7 +9,7 @@ router.use("/public", express.static("public"));
 
 // messages page
 router.get("/", ensureAuthenticated, (req, res) => {
-    db.query(`SELECT * FROM threads JOIN messages ON threads.threadID = messages.threadID WHERE doctorID = ?`, [req.user.doctorID], (err, results) => {
+    db.query(`SELECT * FROM threads JOIN messages ON threads.threadID = messages.threadID WHERE doctorID = ? ORDER BY timestamp`, [req.user.doctorID], (err, results) => {
         if (err) console.log(err);
         const threads = [];
         const inbox = [];
