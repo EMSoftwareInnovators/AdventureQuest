@@ -81,14 +81,17 @@
 			
 			<div id="responseBtns" class="d-flex justify-content-end">
 				<button id="replyBtn" class="btn btn-success px-5 mr-2">Reply</button>
-				<a href="/messages"><button id="deleteBtn" class="btn btn-danger px-5 ml-2">Delete</button></a>
+				<form action="/response/delete" method='POST'>
+					<input type="hidden" name="threadID" value="<%= messages[0].threadID %>">
+					<button id="deleteBtn" type="submit" class="btn btn-danger px-5 ml-2">Delete</button>
+				</form>
 			</div>
 
 			<form class="d-none" action="/response" method="POST" id="responseArea">
 				<input type="hidden" name="threadID" value="<%= messages[0].threadID %>">
 				<textarea name="message" rows="10" class="form-control"></textarea>
 				<div class="d-flex justify-content-end mt-3">
-					<button id="cancelBtn" class="btn btn-danger px-5 mr-2">Cancel</button>
+					<div id="cancelBtn" class="btn btn-danger px-5 mr-2">Cancel</div>
 					<button type="submit" class="btn btn-success px-5 ml-2">Send</button>
 				</div>
 			</form>

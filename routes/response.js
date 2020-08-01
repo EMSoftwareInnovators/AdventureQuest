@@ -45,4 +45,15 @@ router.post("/", ensureAuthenticated, (req, res) => {
     }
 });
 
+router.post("/delete", ensureAuthenticated, (req, res) => {
+    const { threadID } = req.body;
+    db.query(`DELETE FROM messages WHERE threadID = ?`, [threadID], (err, results) => {
+        if (err) console.log(err);
+        db.query(`DELETE FROM threads WHERE threadID = ?`, [threadID], (err, results) => {
+            if (err) console.log(err);
+            res.redirect("/messages");
+        });
+    });
+});
+
 module.exports = router;

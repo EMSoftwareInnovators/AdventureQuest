@@ -15,7 +15,4 @@ if (replyBtn !== null && deleteBtn !== null) {
         responseBtns.classList.add("d-flex");
         responseArea.classList.add("d-none");
     });
-    deleteBtn.addEventListener("click", () => {
-        // Server request to delete message goes here
-    });
 }
