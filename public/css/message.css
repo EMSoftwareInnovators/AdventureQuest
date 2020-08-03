@@ -14,7 +14,7 @@
 	color: #000;
 }
 .actions .fa-star:hover {
-	color: #ffc107;
+	color: #cc8e00 !important;
 }
 .actions div .fa-trash:hover {
 	color: #dc3545;

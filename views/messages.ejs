@@ -47,7 +47,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul id="top-nav" class="navbar-nav w-100 justify-content-end">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-username="<%= user.username %>">
 								<%= user.username %> 
 								<i class="fas fa-user ml-2"></i>
 							</a>
@@ -79,11 +79,11 @@
 					<% for(const message of inbox) { %> 
 						<tr>
 							<td class="actions">
-								<div><i class="fas fa-star mr-2"></i></div>
+								<div><i class="fas fa-star mr-2 <%= (message.favorite !== 0) ? 'favorite' : '' %>" data-threadID="<%= message.threadID %>"></i></div>
 								<a href="<%= `/response/${message.threadID}` %>"><i class="fas fa-paper-plane mx-2"></i></a>
 								<!-- <div><i class="fas fa-trash mx-2"></i></div> -->
 								<form class="delete-form" action="/response/delete" method="post">
-									<input type="hidden" value="<%= message.threadID %>">
+									<input type="hidden" name="threadID" value="<%= message.threadID %>">
 									<div class="trashcan"><i class="fas fa-trash mx-2"></i></div>
 								</form>
 							</td>
