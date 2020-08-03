@@ -14,7 +14,7 @@
 	color: #000;
 }
 .actions .fa-star:hover {
-	color: #ffc107;
+	color: #cc8e00 !important;
 }
 .actions div .fa-trash:hover {
 	color: #dc3545;
@@ -27,11 +27,6 @@
 }
 .subject {
 	font-weight: 700;
-	max-width: 60px;
-}
-.cell-overflow {
-	height: 20px;
-	overflow: hidden;
 }
 .favorite {
 	color: #ffc107 !important;

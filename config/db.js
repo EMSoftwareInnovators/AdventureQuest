@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 	host: "localhost",
 	user: "root",
 	password: "",
-	database: "adventurequest"
+	database: "adventurequest2"
 });
 
 // mysql session storage

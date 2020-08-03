@@ -44,6 +44,5 @@ function generateMap() {
 		const lngLat = marker.getLngLat();
 		long.value = lngLat.lng;
 		lat.value = lngLat.lat;
-		console.log(lngLat.lng, lngLat.lat);
 	});
 }

@@ -41,7 +41,6 @@ app.use((req, res, next) => {
 });
 
 // establish routes
-// app.use("/", require("./routes/index"));
 app.use("/records", require("./routes/records"));
 app.use("/patient", require("./routes/patient"));
 app.use("/quest", require("./routes/quest"));
