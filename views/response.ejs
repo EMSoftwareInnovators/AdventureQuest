@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- Bootstrap -->
-		<link rel="stylesheet" href="public/css/main.min.css" />
+		<link rel="stylesheet" href="/response/public/css/main.min.css" />
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -17,13 +17,14 @@
 			crossorigin="anonymous"
 		></script>
 		<!-- Font Awesome -->
-		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="/response/public/css/all.min.css">
 		<!-- Scripts -->
-		<script src="public/scripts/messages.js" defer></script>
+		<script src="/response/public/scripts/messages.js" defer></script>
+		<script src="/response/public/scripts/response.js" defer></script>
 		<!-- Favicon -->
-		<link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico" />
+		<link rel="shortcut icon" type="image/x-icon" href="/response/public/favicon.ico" />
 		<!-- Custom Styles -->
-		<link rel="stylesheet" href="public/css/message.css" />
+		<link rel="stylesheet" href="/response/public/css/message.css" />
 		<title>Adventure Quest | Records</title>
 	</head>
 	<body>
@@ -31,7 +32,7 @@
 		<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="public/img/logo.png" height="30" class="d-inline-block align-top" loading="lazy" />
+					<img src="/response/public/img/logo.png" height="30" class="d-inline-block align-top" loading="lazy" />
 				</a>
 				<button
 					class="navbar-toggler"
@@ -47,12 +48,12 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul id="top-nav" class="navbar-nav w-100 justify-content-end">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-username="<%= user.username %>">
 								<%= user.username %> 
 								<i class="fas fa-user ml-2"></i>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a href="/records" class="dropdown-item"><i class="fas fa-home mr-1"></i> Home</a>
+								<a href="/records" class="dropdown-item"><i class="fas fa-home mr-1"></i> Dashboard</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="/messages"><i class="far fa-envelope mr-1"></i> Messages</a>
 								<div class="dropdown-divider"></div>
@@ -67,29 +68,30 @@
 
 		<!-- Messages -->
 		<div id="container" class="container my-5">
-			<h1 class="display-4">Subject Line</h1>
-			<p>
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo cum omnis provident. Officia eius debitis consectetur, assumenda fugit vero mollitia cum magni deleniti modi ipsa dolor vitae
-				ullam molestiae ab, quasi laborum, dignissimos iure esse. Autem officia quam, totam corrupti non consectetur exercitationem nulla vitae, aspernatur quibusdam nam praesentium reprehenderit ipsa
-				hic et nihil ut expedita ipsam dolorum. Debitis placeat modi architecto minus ab consequatur in odio quis repellat, tempora temporibus nihil incidunt consequuntur, cupiditate similique laborum
-				nulla, earum eligendi culpa eum? Dolorem exercitationem nisi delectus laborum at officiis itaque repudiandae molestias, vitae nam explicabo magni, esse eaque tenetur neque maiores pariatur
-				eveniet distinctio, officia minus earum omnis nobis. Quas quo, saepe nulla itaque molestiae consequatur corrupti similique ab? Commodi, cum! Voluptatem sunt odit deserunt atque nemo minus
-				officia, voluptate praesentium quam quae architecto exercitationem quasi tempora ipsam ipsa. Hic tenetur repellat neque! Itaque mollitia totam deserunt aspernatur omnis repellat animi, ipsum
-				tenetur veritatis debitis accusantium rerum autem! Et libero hic vitae beatae quam iste consequuntur, nemo aliquam quos nam reprehenderit animi explicabo excepturi aperiam amet nobis eligendi
-				iure laborum est rem! In esse aperiam omnis officiis vero totam ducimus ad eum veniam voluptas quas labore molestias maxime accusantium voluptatibus doloremque minus, cupiditate exercitationem
-				dolores amet accusamus autem harum, explicabo enim! Quisquam dolorem vitae ratione voluptatum cumque, aperiam sit vel magnam tempore officia nulla debitis error asperiores nesciunt suscipit
-				laboriosam non sequi maiores ut ipsam distinctio itaque at iure. Non vero facilis, modi distinctio dolorum quidem in id consequatur reprehenderit fugit! Adipisci aperiam dolorum ullam nostrum
-				nulla facilis est delectus maiores soluta culpa hic, deserunt possimus nisi veniam eligendi voluptatum. Optio temporibus aliquid sit tenetur inventore. Consectetur qui, harum voluptate sed
-				ullam inventore cumque blanditiis veritatis quisquam totam rerum aspernatur officia in? Facilis, sit excepturi nulla quam repellendus necessitatibus vero.
-			</p>
+			<h1 class="display-4"><%= messages[0].subject %> </h1>
+			<%- include('./partials/errors.ejs') %>
+			<% for(const message of messages) { %>
+				<div class="border p-3 my-1">
+					<p><i class="fas fa-user mr-1"></i> <span class="font-weight-bold"><%= message.username %></span> <span class="font-italic"><%= message.timestamp %> </span></p>
+					<p><%= message.message %> </p>
+				</div>
+			<% } %> 
+
+			<div class="mb-3"></div>
+			
 			<div id="responseBtns" class="d-flex justify-content-end">
 				<button id="replyBtn" class="btn btn-success px-5 mr-2">Reply</button>
-				<a href="/messages"><button id="deleteBtn" class="btn btn-danger px-5 ml-2">Delete</button></a>
+				<form action="/response/delete" method='POST'>
+					<input type="hidden" name="threadID" value="<%= messages[0].threadID %>">
+					<button id="deleteBtn" type="submit" class="btn btn-danger px-5 ml-2">Delete</button>
+				</form>
 			</div>
-			<form action="" id="responseArea" class="form-group invisible">
-				<textarea rows="10" class="form-control"></textarea>
+
+			<form class="d-none" action="/response" method="POST" id="responseArea">
+				<input type="hidden" name="threadID" value="<%= messages[0].threadID %>">
+				<textarea name="message" rows="10" class="form-control"></textarea>
 				<div class="d-flex justify-content-end mt-3">
-					<button id="cancelBtn" class="btn btn-danger px-5 mr-2">Cancel</button>
+					<div id="cancelBtn" class="btn btn-danger px-5 mr-2">Cancel</div>
 					<button type="submit" class="btn btn-success px-5 ml-2">Send</button>
 				</div>
 			</form>

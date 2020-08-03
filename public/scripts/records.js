@@ -7,9 +7,16 @@ const workPhone = document.querySelector("#workPhone");
 const email = document.querySelector("#email");
 const meds = document.querySelector("#medicationNotes");
 const notes = document.querySelector("#patientNotes");
+const userID = document.querySelector("#userID");
+const form = document.querySelector("#form");
+const updateBtn = document.querySelector("#updateBtn");
+const deleteBtn = document.querySelector("#deleteBtn");
+const action = document.querySelector("#action");
+const mistake = document.querySelector("#mistake").value;
 
 const updateFields = () => {
 	const patient = patientRecord.options[patientRecord.selectedIndex];
+	userID.value = patient.getAttribute("data-userID");
 	firstName.value = patient.getAttribute("data-fName");
 	middleName.value = patient.getAttribute("data-mName");
 	lastName.value = patient.getAttribute("data-lName");
@@ -55,4 +62,26 @@ patientRecord.addEventListener("change", () => {
 	updateFields();
 });
 
+updateBtn.addEventListener("click", () => {
+	action.value = "update";
+	form.submit();
+});
+
+deleteBtn.addEventListener("click", () => {
+	action.value = "delete";
+	form.submit();
+});
+
 updateFields();
+
+if (mistake === "true") {
+	patientRecord.value = patientRecord.getAttribute("data-selected");
+	firstName.value = firstName.getAttribute("data-selected");
+	middleName.value = middleName.getAttribute("data-selected");
+	lastName.value = lastName.getAttribute("data-selected");
+	homePhone.value = formatPhone(homePhone.getAttribute("data-selected"));
+	workPhone.value = formatPhone(workPhone.getAttribute("data-selected"));
+	email.value = email.getAttribute("data-selected");
+	meds.value = meds.getAttribute("data-selected");
+	notes.value = notes.getAttribute("data-selected");
+}

@@ -17,13 +17,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // express session middleware
 app.use(
-	session({
-		// secret needs to be an array of random chars in deployment
-		secret: "secret",
-		store: sessionStore,
-		resave: true,
-		saveUninitialized: true
-	})
+    session({
+        // secret needs to be an array of random chars in deployment
+        secret: "secret",
+        store: sessionStore,
+        resave: true,
+        saveUninitialized: true,
+    })
 );
 
 // passport middleware
@@ -35,30 +35,20 @@ app.use(flash());
 
 // global vars
 app.use((req, res, next) => {
-	res.locals.success_msg = req.flash("success_msg");
-	res.locals.error_msg = req.flash("error_msg");
-	next();
+    res.locals.success_msg = req.flash("success_msg");
+    res.locals.error_msg = req.flash("error_msg");
+    next();
 });
 
 // establish routes
-app.use("/", require("./routes/index"));
+app.use("/records", require("./routes/records"));
+app.use("/patient", require("./routes/patient"));
+app.use("/quest", require("./routes/quest"));
+app.use("/info", require("./routes/info"));
+app.use("/help", require("./routes/help"));
+app.use("/messages", require("./routes/messages"));
+app.use("/response", require("./routes/response"));
 app.use("/users", require("./routes/users"));
 
 // set server to listen
 app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
-
-/**
- * How to write a query
- *
- * db.query('SELECT * FROM table WHERE condition = ?, [condition], function(err, result) {
- *  // err stores any errors if there are any and allows you to do what ever error handling you'd like
- *  if(err) {
- *      console.log(err)
- *  }
- *
- *  // It returns an array with each element being an object consiting of the selected row probably best
- *  // to console.log it to just check out what it is and see what you want to do next. Remember its logging
- *  // to the vs code (server) terminal not the browser console.
- *  console.log(results);
- * })
- */
