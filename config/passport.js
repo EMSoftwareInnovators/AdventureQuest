@@ -12,7 +12,7 @@ module.exports = function (passport) {
 				passReqToCallback: true
 			},
 			function (req, username, password, done) {
-				db.query(`SELECT * FROM users_medical WHERE username = ?`, [username], (err, results) => {
+				db.query(`SELECT * FROM users WHERE username = ?`, [username], (err, results) => {
 					if (err) return done(err);
 					if (!results.length) {
 						return done(null, false, req.flash("error_msg", "Username not found."));
@@ -34,12 +34,15 @@ module.exports = function (passport) {
 
 	// used to serialize the user for the session
 	passport.serializeUser((user, done) => {
-		done(null, user.doctorID);
+		done(null, user.userID);
 	});
 
 	// used to deserialize the user
 	passport.deserializeUser((id, done) => {
-		db.query("SELECT * FROM users_medical WHERE doctorID = ?", [id], (err, rows) => {
+		/**
+		 * restrict what fields are contained within req.user object
+		 */
+		db.query("SELECT * FROM users JOIN users_medical ON users.userID = users_medical.userID WHERE users.userID = ?", [id], (err, rows) => {
 			done(err, rows[0]);
 		});
 	});

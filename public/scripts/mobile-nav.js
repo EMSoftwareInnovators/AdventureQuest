@@ -1,5 +1,6 @@
 const topNav = document.querySelector("#top-nav");
 const pageNav = document.querySelector("#page-nav");
+const username = document.querySelector("#navbarDropdown").getAttribute("data-username");
 const pageNavContent = pageNav.innerHTML;
 const topNavContent = topNav.innerHTML;
 
@@ -8,7 +9,7 @@ const mobileFormat = () => {
 	topNav.classList.add("ml-1");
 	topNav.innerHTML = `<li class="nav-item">
         <a class="nav-link">
-            <i class="fas fa-user"></i> Johnny Bravo
+            <i class="fas fa-user"></i> ${username}
         </a>
     </li>
 
@@ -31,7 +32,7 @@ const mobileFormat = () => {
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="/new">
+        <a class="nav-link" href="/patient">
             <i class="fas fa-folder"></i> New Patient
         </a>
     </li>

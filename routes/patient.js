@@ -77,7 +77,7 @@ router.post("/", ensureAuthenticated, (req, res) => {
     } else {
         // check if email exists
         const emailExists = new Promise((resolve, reject) => {
-            db.query("SELECT email FROM users_patients WHERE email = ?", [email], (err, results) => {
+            db.query("SELECT email FROM users WHERE email = ?", [email], (err, results) => {
                 if (results.length > 0) {
                     resolve({ match: true, msg: "That email is already registered!" });
                 } else {
@@ -102,15 +102,21 @@ router.post("/", ensureAuthenticated, (req, res) => {
                     workPhone,
                 });
             } else {
-                db.query(
-                    `INSERT INTO users_patients (doctorID, fName, mName, lName, email, homePhone, workPhone, medication, notes)
-                        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                    [req.user.doctorID, fName, mName, lName, email, homePhone, workPhone, medication, notes],
-                    (err, results) => {
-                        req.flash("success_msg", "Patient record generated!");
-                        res.redirect("/patient");
-                    }
-                );
+                db.query(`INSERT INTO users (email) VALUES(?)`, [email], (err, results) => {
+                    if (err) console.log(err);
+                    db.query(`SELECT userID FROM users WHERE email = ?`, [email], (err, results) => {
+                        if (err) console.log(err);
+                        db.query(
+                            `INSERT INTO users_patients (doctorID, userID, fName, mName, lName, homePhone, workPhone, medication, notes)
+                                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                            [req.user.doctorID, results[0].userID, fName, mName, lName, homePhone, workPhone, medication, notes],
+                            (err, results) => {
+                                req.flash("success_msg", "Patient record generated!");
+                                res.redirect("/patient");
+                            }
+                        );
+                    });
+                });
             }
         });
     }

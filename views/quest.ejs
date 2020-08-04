@@ -50,7 +50,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul id="top-nav" class="navbar-nav w-100 justify-content-end">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-username="<%= user.username %>">
 								<%= user.username %> 
 								<i class="fas fa-user ml-2"></i>
 							</a>
@@ -152,8 +152,8 @@
 					<div class="col-md col-12">
 						<label for="questStatus"><strong>Quest Status *</strong></label>
 						<select name="questStatus" class="form-control" id="questStatus" data-selected="<%= (typeof questStatus !== 'undefined') ? questStatus : '' %>">
-							<option value="incomplete">Incomplete</option>
-							<option value="complete">Complete</option>
+							<option value="0">Incomplete</option>
+							<option value="1">Complete</option>
 						</select>
 					</div>
 				</div>

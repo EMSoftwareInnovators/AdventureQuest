@@ -20,6 +20,7 @@
 		<script src="https://kit.fontawesome.com/47ace9daa2.js" crossorigin="anonymous"></script>
 		<!-- Scripts -->
 		<link rel="stylesheet" href="help/public/css/all.min.css">
+		<script src="help/public/scripts/mobile-nav.js" defer></script>
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="help/public/favicon.ico" />
 		<title>Adventure Quest | Help</title>
@@ -45,7 +46,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul id="top-nav" class="navbar-nav w-100 justify-content-end">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-username="<%= user.username %>">
 								<%= user.username %> 
 								<i class="fas fa-user ml-2"></i>
 							</a>
