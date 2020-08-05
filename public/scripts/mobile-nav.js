@@ -5,9 +5,9 @@ const pageNavContent = pageNav.innerHTML;
 const topNavContent = topNav.innerHTML;
 
 const mobileFormat = () => {
-	pageNav.innerHTML = "";
-	topNav.classList.add("ml-1");
-	topNav.innerHTML = `<li class="nav-item">
+    pageNav.innerHTML = "";
+    topNav.classList.add("ml-1");
+    topNav.innerHTML = `<li class="nav-item">
         <a class="nav-link">
             <i class="fas fa-user"></i> ${username}
         </a>
@@ -39,7 +39,7 @@ const mobileFormat = () => {
 
     <li class="nav-item">
         <a class="nav-link" href="/quest">
-            <i class="fas fa-folder"></i> Quest Designer
+            <i class="fas fa-folder"></i> New Quest
         </a>
     </li>
 
@@ -58,46 +58,46 @@ const mobileFormat = () => {
 };
 
 const wideFormat = () => {
-	pageNav.innerHTML = pageNavContent;
-	topNav.innerHTML = topNavContent;
+    pageNav.innerHTML = pageNavContent;
+    topNav.innerHTML = topNavContent;
 };
 
 window.onload = () => {
-	if (window.outerHeight) {
-		const browserDimensions = {
-			width: window.outerWidth,
-			height: window.outerHeight
-		};
-		if (browserDimensions.width <= 850) {
-			mobileFormat();
-		} else {
-			wideFormat();
-		}
-	} else {
-		// IE compatibility
-		const browserDimensions = {
-			width: document.body.clientWidth,
-			height: document.body.clientHeight
-		};
-	}
+    if (window.outerHeight) {
+        const browserDimensions = {
+            width: window.outerWidth,
+            height: window.outerHeight,
+        };
+        if (browserDimensions.width <= 850) {
+            mobileFormat();
+        } else {
+            wideFormat();
+        }
+    } else {
+        // IE compatibility
+        const browserDimensions = {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight,
+        };
+    }
 };
 
 window.onresize = () => {
-	if (window.outerHeight) {
-		const browserDimensions = {
-			width: window.outerWidth,
-			height: window.outerHeight
-		};
-		if (browserDimensions.width <= 850) {
-			mobileFormat();
-		} else {
-			wideFormat();
-		}
-	} else {
-		// IE compatibility
-		const browserDimensions = {
-			width: document.body.clientWidth,
-			height: document.body.clientHeight
-		};
-	}
+    if (window.outerHeight) {
+        const browserDimensions = {
+            width: window.outerWidth,
+            height: window.outerHeight,
+        };
+        if (browserDimensions.width <= 850) {
+            mobileFormat();
+        } else {
+            wideFormat();
+        }
+    } else {
+        // IE compatibility
+        const browserDimensions = {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight,
+        };
+    }
 };

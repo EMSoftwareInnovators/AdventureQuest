@@ -8,39 +8,39 @@ const container = document.querySelector("#container");
 const username = document.querySelector("#navbarDropdown").getAttribute("data-username");
 
 for (const star of stars) {
-	star.addEventListener("click", () => {
-		star.classList.toggle("favorite");
-		const threadID = star.getAttribute("data-threadID");
-		if (star.classList.contains("favorite")) {
-			let xhr = new XMLHttpRequest();
-			xhr.open("PUT", `http://localhost:5000/messages/favorite/${threadID}/true`, true);
-			xhr.send();
-		} else {
-			let xhr = new XMLHttpRequest();
-			xhr.open("PUT", `http://localhost:5000/messages/favorite/${threadID}/false`, true);
-			xhr.send();
-		}
-	});
+    star.addEventListener("click", () => {
+        star.classList.toggle("favorite");
+        const threadID = star.getAttribute("data-threadID");
+        if (star.classList.contains("favorite")) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("PUT", `http://localhost:5000/messages/favorite/${threadID}/true`, true);
+            xhr.send();
+        } else {
+            let xhr = new XMLHttpRequest();
+            xhr.open("PUT", `http://localhost:5000/messages/favorite/${threadID}/false`, true);
+            xhr.send();
+        }
+    });
 }
 
 for (let i = 0; i < trashCans.length; i++) {
-	trashCans[i].addEventListener("click", () => {
-		deleteForms[i].submit();
-	});
+    trashCans[i].addEventListener("click", () => {
+        deleteForms[i].submit();
+    });
 }
 
 /**
  * Mobile Formatting
  */
 const mobileFormat = () => {
-	if (table !== null) {
-		table.classList.remove("my-5");
-		table.classList.add("table-striped");
-		container.classList.remove("container");
-		container.classList.add("container-fluid");
-	}
-	topNav.classList.add("ml-1");
-	topNav.innerHTML = `<li class="nav-item">
+    if (table !== null) {
+        table.classList.remove("my-5");
+        table.classList.add("table-striped");
+        container.classList.remove("container");
+        container.classList.add("container-fluid");
+    }
+    topNav.classList.add("ml-1");
+    topNav.innerHTML = `<li class="nav-item">
         <a class="nav-link">
             <i class="fas fa-user"></i> ${username}
         </a>
@@ -72,7 +72,7 @@ const mobileFormat = () => {
 
     <li class="nav-item">
         <a class="nav-link" href="/quest">
-            <i class="fas fa-folder"></i> Quest Designer
+            <i class="fas fa-folder"></i> New Quest
         </a>
     </li>
 
@@ -91,51 +91,51 @@ const mobileFormat = () => {
 };
 
 const wideFormat = () => {
-	if (table !== null) {
-		table.classList.add("my-5");
-		table.classList.remove("table-striped");
-		container.classList.add("container");
-		container.classList.remove("container-fluid");
-	}
-	topNav.innerHTML = topNavContent;
+    if (table !== null) {
+        table.classList.add("my-5");
+        table.classList.remove("table-striped");
+        container.classList.add("container");
+        container.classList.remove("container-fluid");
+    }
+    topNav.innerHTML = topNavContent;
 };
 
 window.onload = () => {
-	if (window.outerHeight) {
-		const browserDimensions = {
-			width: window.outerWidth,
-			height: window.outerHeight
-		};
-		if (browserDimensions.width <= 850) {
-			mobileFormat();
-		} else {
-			wideFormat();
-		}
-	} else {
-		// IE compatibility
-		const browserDimensions = {
-			width: document.body.clientWidth,
-			height: document.body.clientHeight
-		};
-	}
+    if (window.outerHeight) {
+        const browserDimensions = {
+            width: window.outerWidth,
+            height: window.outerHeight,
+        };
+        if (browserDimensions.width <= 850) {
+            mobileFormat();
+        } else {
+            wideFormat();
+        }
+    } else {
+        // IE compatibility
+        const browserDimensions = {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight,
+        };
+    }
 };
 
 window.onresize = () => {
-	if (window.outerHeight) {
-		const browserDimensions = {
-			width: window.outerWidth,
-			height: window.outerHeight
-		};
-		if (browserDimensions.width <= 850) {
-			mobileFormat();
-		} else {
-			wideFormat();
-		}
-	} else {
-		// IE compatibility
-		const browserDimensions = {
-			width: document.body.clientWidth,
-			height: document.body.clientHeight
-		};
-	}
+    if (window.outerHeight) {
+        const browserDimensions = {
+            width: window.outerWidth,
+            height: window.outerHeight,
+        };
+        if (browserDimensions.width <= 850) {
+            mobileFormat();
+        } else {
+            wideFormat();
+        }
+    } else {
+        // IE compatibility
+        const browserDimensions = {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight,
+        };
+    }
 };
