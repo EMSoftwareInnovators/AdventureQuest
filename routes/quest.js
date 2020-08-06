@@ -83,6 +83,18 @@ router.post("/", ensureAuthenticated, (req, res) => {
 					res.redirect("quest");
 				}
 			);
+		} else {
+			// no quest items branch
+			db.query(
+				`INSERT INTO quests (doctorID, patientID, description, difficulty, latitude, longitude, name, objectives, reward, status, type)
+					VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+				[req.user.doctorID, patientID, questDescription, questDifficulty, latitude, longitude, questName, questObjectives, questReward, parseInt(questStatus), questType],
+				(err, results) => {
+					if (err) console.log(err);
+					req.flash("success_msg", "Quest Created!");
+					res.redirect("quest");
+				}
+			);
 		}
 	}
 });
