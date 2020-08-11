@@ -24,10 +24,10 @@
 		<!-- Scripts -->
 		<script src="quest/public/scripts/mobile-nav.js" defer></script>
 		<script src="quest/public/scripts/map.js" defer></script>
-		<script src="quest/public/scripts/quest.js" defer></script>
+		<script src="quest/public/scripts/update.js" defer></script>
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="quest/public/favicon.ico" />
-		<title>Adventure Quest | Quest</title>
+		<title>Adventure Quest | Update Quest</title>
 	</head>
 	<body>
 		<!-- Navbar -->
@@ -78,10 +78,10 @@
 					<a class="nav-link" href="/patient">New Patient</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" href="#">New Quest</a>
+					<a class="nav-link" href="/quest">New Quest</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/update">Update Quest</a>
+					<a class="nav-link active" href="/update">Update Quest</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/info">Account Info</a>
@@ -99,11 +99,12 @@
 							<option value="<%= null %>">No patients assigned</option>
 						<% } else { %>
 							<% for(const patient of patients) { %>
-								<option value="<%= patient.patientID %>"><%= `${patient.fName} ${patient.lName}` %></option>
+								<option value="<%= patient.patientID %>" data-questType="<%= patient.type %>" data-questName="<%= patient.name %>" data-questDifficulty="<%= patient.difficulty %>" data-questItems="<%= patient.additionalItems %>" data-questObjectives="<%= patient.objectives %>" data-questDescription="<%= patient.description %>" data-questRewards="<%= patient.reward %>" data-questStatus="<%= patient.status %>"><%= `${patient.fName} ${patient.lName} - ${patient.name}` %></option>
 							<% } %> 
 						<% } %> 
 					</select>
 				</div>
+				<input type="hidden" name="userID" id="userID">
 				<div class="form-row mb-3">
 					<div class="col-md col-12">
 						<label for="questType"><strong>Quest Type *</strong></label>

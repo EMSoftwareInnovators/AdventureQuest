@@ -44,6 +44,7 @@ app.use((req, res, next) => {
 app.use("/records", require("./routes/records"));
 app.use("/patient", require("./routes/patient"));
 app.use("/quest", require("./routes/quest"));
+app.use("/update", require("./routes/update"));
 app.use("/info", require("./routes/info"));
 app.use("/help", require("./routes/help"));
 app.use("/messages", require("./routes/messages"));
